@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 07, 2025 alle 13:36
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.0.30
+-- Creato il: Feb 14, 2025 alle 13:08
+-- Versione del server: 10.4.27-MariaDB
+-- Versione PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,8 +100,22 @@ CREATE TABLE `forme` (
   `for_venduta` tinyint(1) DEFAULT 0,
   `for_data_acquisto` datetime DEFAULT NULL,
   `for_dat_id` int(11) DEFAULT NULL,
-  `for_sta_id` varchar(7) DEFAULT NULL
+  `for_prezzo_reale` float NOT NULL,
+  `for_tip_id` int(11) NOT NULL,
+  `for_sta_id` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `immagini`
+--
+
+CREATE TABLE `immagini` (
+  `imm_id` int(11) NOT NULL,
+  `imm_url` varchar(2048) NOT NULL,
+  `imm_cas_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -113,8 +127,7 @@ CREATE TABLE `stagionature` (
   `sta_id` varchar(7) NOT NULL,
   `sta_num` int(11) NOT NULL,
   `sta_prezzo_prima` float NOT NULL,
-  `sta_prezzo_seconda` float NOT NULL,
-  `sta_prezzo_reale` float NOT NULL
+  `sta_prezzo_seconda` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -127,6 +140,18 @@ CREATE TABLE `tipologie` (
   `tip_id` int(11) NOT NULL,
   `tip_dex` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `tipo_forma`
+--
+
+CREATE TABLE `tipo_forma` (
+  `tip_id` int(11) NOT NULL,
+  `tip_nome` varchar(50) NOT NULL,
+  `tip_imm_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Indici per le tabelle scaricate
@@ -167,7 +192,15 @@ ALTER TABLE `dati_giornalieri`
 ALTER TABLE `forme`
   ADD PRIMARY KEY (`for_id`),
   ADD KEY `for_dat_id` (`for_dat_id`),
+  ADD KEY `for_tip_id` (`for_tip_id`),
   ADD KEY `for_sta_id` (`for_sta_id`);
+
+--
+-- Indici per le tabelle `immagini`
+--
+ALTER TABLE `immagini`
+  ADD PRIMARY KEY (`imm_id`),
+  ADD KEY `imm_cas_id` (`imm_cas_id`);
 
 --
 -- Indici per le tabelle `stagionature`
@@ -180,6 +213,13 @@ ALTER TABLE `stagionature`
 --
 ALTER TABLE `tipologie`
   ADD PRIMARY KEY (`tip_id`);
+
+--
+-- Indici per le tabelle `tipo_forma`
+--
+ALTER TABLE `tipo_forma`
+  ADD PRIMARY KEY (`tip_id`),
+  ADD KEY `tip_imm_id` (`tip_imm_id`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -204,9 +244,21 @@ ALTER TABLE `dati_giornalieri`
   MODIFY `dat_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT per la tabella `immagini`
+--
+ALTER TABLE `immagini`
+  MODIFY `imm_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `tipologie`
 --
 ALTER TABLE `tipologie`
+  MODIFY `tip_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `tipo_forma`
+--
+ALTER TABLE `tipo_forma`
   MODIFY `tip_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -238,7 +290,20 @@ ALTER TABLE `dati_giornalieri`
 --
 ALTER TABLE `forme`
   ADD CONSTRAINT `forme_ibfk_1` FOREIGN KEY (`for_dat_id`) REFERENCES `dati_giornalieri` (`dat_id`),
-  ADD CONSTRAINT `forme_ibfk_2` FOREIGN KEY (`for_sta_id`) REFERENCES `stagionature` (`sta_id`);
+  ADD CONSTRAINT `forme_ibfk_2` FOREIGN KEY (`for_tip_id`) REFERENCES `tipo_forma` (`tip_id`),
+  ADD CONSTRAINT `forme_ibfk_3` FOREIGN KEY (`for_sta_id`) REFERENCES `stagionature` (`sta_id`);
+
+--
+-- Limiti per la tabella `immagini`
+--
+ALTER TABLE `immagini`
+  ADD CONSTRAINT `immagini_ibfk_1` FOREIGN KEY (`imm_cas_id`) REFERENCES `caseifici` (`cas_code`);
+
+--
+-- Limiti per la tabella `tipo_forma`
+--
+ALTER TABLE `tipo_forma`
+  ADD CONSTRAINT `tipo_forma_ibfk_1` FOREIGN KEY (`tip_imm_id`) REFERENCES `immagini` (`imm_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
