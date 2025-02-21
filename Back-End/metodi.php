@@ -50,3 +50,28 @@ require_once('connessione.php');
     } else {
         return "Errore nella creazione del cliente: " . $stmt->error;
     }
+    //metodo per loggare con il cliente
+    function loginCliente(Cliente $cliente){
+            $username = $cliente_username
+            $password = $cliente_password
+            $stmt = $conn->prepare("SELECT * FROM clienti WHERE cli_username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            //Se il risultato trova almeno una riga significa che l'username è giusto
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                //Verifica se la password hashata è giusta
+                if (password_verify($password, $user['cli_Password'])) {
+                    session_start();
+                    $_SESSION['logged_in'] = true;
+                    $_SESSION['user_data'] = $cliente;
+                    //Se la password è giusta reindirizza alla pagina principale
+                    header('Location: paginaprincipale.php');
+                    exit();
+                }
+            }
+            //Se la password è errata reindirizza alla pagina di login
+            header('Location: login.html?error=' . urlencode("Username o password errati"));
+            exit();
+    }
