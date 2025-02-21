@@ -1,0 +1,33 @@
+::ng-deep .p-galleria-indicators {
+    bottom: 10px; /* Regola la posizione */
+}
+
+::ng-deep .p-galleria-indicator button {
+    background-color: #FFD700 !important; /* Cambia colore */
+    width: 12px; /* Personalizza dimensione */
+    height: 12px;
+    border-radius: 50%; /* Rendi gli indicatori circolari */
+    transition: background-color 0.3s ease;
+}
+
+::ng-deep .p-galleria-indicator.p-highlight button {
+    background-color: #FF4500 !important; /* Colore attivo */
+}
+
+::ng-deep .p-galleria .p-galleria-item-prev,
+::ng-deep .p-galleria .p-galleria-item-next {
+  background-color: rgba(0, 0, 0, 0.5) !important; // Sfondo semi-trasparente
+  color: white !important; // Colore icona freccia
+  border-radius: 50%; // Rende i pulsanti rotondi
+  width: 40px; // Dimensione pulsante
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .p-galleria .p-galleria-item-prev:hover,
+::ng-deep .p-galleria .p-galleria-item-next:hover {
+  background-color: rgba(255, 204, 0, 0.8) !important; // Cambia colore al passaggio del mouse (giallo)
+  color: black !important;
+}
