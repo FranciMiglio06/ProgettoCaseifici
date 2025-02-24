@@ -74,4 +74,15 @@ require_once('connessione.php');
             //Se la password è errata reindirizza alla pagina di login
             header('Location: login.html?error=' . urlencode("Username o password errati"));
             exit();
+        }
+    Function getImage(){
+        
     }
+    Function compra(){
+        
+    }
+    Function getForma(){
+        
+    }
+        
+    
