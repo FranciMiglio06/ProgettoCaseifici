@@ -4,7 +4,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header('Location: login.html');
     exit();
     }
-require_once('connessione.php');
     class Cliente {
         public $username;
         public $password;
@@ -21,20 +20,21 @@ require_once('connessione.php');
         public $dex;
         public $partita_iva;
         public $indirizzo;
-        public $cli_id:
+        public $cli_id;
     }
-    function caseifici(){
+    function caseifici($conn){
+        
         $sql= "SELECT *FROM caseifici";
         $risultato=$conn->query($sql);
         $caseifici = $risultato->fetch_assoc(MYSQLI_ASSOC);}
-    function caseificio($id) {
+    function caseificio($id,$conn) {
         $sql = "SELECT * FROM caseifici WHERE id = $id";
         $risultato=$conn->query($sql);
         $caseificio = $risultato->fetch_assoc();
         return $caseificio;
     }
 
-    function createCliente(Cliente $cliente){
+    function createCliente(Cliente $cliente,$conn){
     $result = $conn->query("SELECT cli_id FROM clienti ORDER BY cli_id");
     $usedId = [];
     while ($row = $result->fetch_assoc()) {
@@ -59,9 +59,9 @@ require_once('connessione.php');
         return "Errore nella creazione del cliente: " . $stmt->error;
     }
     //metodo per loggare con il cliente
-    function loginCliente(Cliente $cliente){
-            $username = $cliente_username
-            $password = $cliente_password
+    function loginCliente(Cliente $cliente,$conn){
+            $username = $cliente->password;
+            $password = $cliente->password;
             $stmt = $conn->prepare("SELECT * FROM clienti WHERE cli_username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -83,14 +83,22 @@ require_once('connessione.php');
             header('Location: login.html?error=' . urlencode("Username o password errati"));
             exit();
         }
-    Function getImage($code){
-        
-    }
+        function getImage($code, $caseifici, $cas_id) {
+            foreach ($caseifici as $key => $value) {
+                if ($value == $code) { 
+                    foreach ($cas_id as $image_key => $image_value) {
+                        if ($image_value == $key) { // Se il valore dell'immagine corrisponde all'id del caseificio
+                            return $image_key; // Restituisce la chiave dell'immagine corrispondente
+                        }
+                    }
+                }
+            }
+            return null; // Se non c'è corrispondenza, restituisce null
+        }
     Function compra(){
         
     }
     Function getForma(){
-        
+                
     }
-        
-    
+}
