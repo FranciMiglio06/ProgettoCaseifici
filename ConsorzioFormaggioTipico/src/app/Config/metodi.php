@@ -15,6 +15,14 @@ require_once('connessione.php');
         public $num_tel;
         public $partita_iva;
     }
+    class Caseifici {
+        public $code;
+        public $nome;
+        public $dex;
+        public $partita_iva;
+        public $indirizzo;
+        public $cli_id:
+    }
     function caseifici(){
         $sql= "SELECT *FROM caseifici";
         $risultato=$conn->query($sql);
@@ -75,7 +83,7 @@ require_once('connessione.php');
             header('Location: login.html?error=' . urlencode("Username o password errati"));
             exit();
         }
-    Function getImage(){
+    Function getImage($code){
         
     }
     Function compra(){
