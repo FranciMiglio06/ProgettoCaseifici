@@ -33,7 +33,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         $caseificio = $risultato->fetch_assoc();
         return $caseificio;
     }
-
     function createCliente(Cliente $cliente,$conn){
     $result = $conn->query("SELECT cli_id FROM clienti ORDER BY cli_id");
     $usedId = [];
@@ -101,4 +100,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     Function getForma(){
                 
     }
+    //if ($caseificio['cas_code'] == $cliente['cli_cas']) { 
+        return $image_key; // Restituisce la chiave dell'immagine corrispondente
+    }
+    //
 }
