@@ -22,15 +22,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         public $indirizzo;
         public $cli_id;
     }
-    function caseifici($conn){
+    
+        function caseifici($conn){
         
         $sql= "SELECT *FROM caseifici";
         $risultato=$conn->query($sql);
         $caseifici = $risultato->fetch_assoc(MYSQLI_ASSOC);}
-    function caseificio($id,$conn) {
+    function caseificio($id,$conn,$cliente) {
         $sql = "SELECT * FROM caseifici WHERE id = $id";
         $risultato=$conn->query($sql);
         $caseificio = $risultato->fetch_assoc();
+        if ($caseificio['cas_code'] == $cliente['cli_cas']){ 
+            return true;
+        }  else {return false;}
         return $caseificio;
     }
     function createCliente(Cliente $cliente,$conn){
@@ -100,8 +104,4 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     Function getForma(){
                 
     }
-    //if ($caseificio['cas_code'] == $cliente['cli_cas']) { 
-        return $image_key; // Restituisce la chiave dell'immagine corrispondente
-    }
-    //
 }
