@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 14, 2025 alle 13:08
+-- Creato il: Mar 05, 2025 alle 11:02
 -- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.2.0
+-- Versione PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acquisti` (
-  `com_id` int(11) NOT NULL,
-  `com_cli_id` int(11) DEFAULT NULL,
-  `com_for_id` varchar(7) DEFAULT NULL,
-  `com_tip_id` int(11) DEFAULT NULL
+  `acq_id` int(11) NOT NULL,
+  `acq_cli_id` int(11) DEFAULT NULL,
+  `acq_for_id` varchar(7) DEFAULT NULL,
+  `acq_tip_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -161,10 +161,10 @@ CREATE TABLE `tipo_forma` (
 -- Indici per le tabelle `acquisti`
 --
 ALTER TABLE `acquisti`
-  ADD PRIMARY KEY (`com_id`),
-  ADD KEY `com_cli_id` (`com_cli_id`),
-  ADD KEY `com_for_id` (`com_for_id`),
-  ADD KEY `com_tip_id` (`com_tip_id`);
+  ADD PRIMARY KEY (`acq_id`),
+  ADD KEY `com_cli_id` (`acq_cli_id`),
+  ADD KEY `com_for_id` (`acq_for_id`),
+  ADD KEY `com_tip_id` (`acq_tip_id`);
 
 --
 -- Indici per le tabelle `caseifici`
@@ -229,7 +229,7 @@ ALTER TABLE `tipo_forma`
 -- AUTO_INCREMENT per la tabella `acquisti`
 --
 ALTER TABLE `acquisti`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `acq_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `clienti`
@@ -269,9 +269,9 @@ ALTER TABLE `tipo_forma`
 -- Limiti per la tabella `acquisti`
 --
 ALTER TABLE `acquisti`
-  ADD CONSTRAINT `acquisti_ibfk_1` FOREIGN KEY (`com_cli_id`) REFERENCES `clienti` (`cli_id`),
-  ADD CONSTRAINT `acquisti_ibfk_2` FOREIGN KEY (`com_for_id`) REFERENCES `forme` (`for_id`),
-  ADD CONSTRAINT `acquisti_ibfk_3` FOREIGN KEY (`com_tip_id`) REFERENCES `tipologie` (`tip_id`);
+  ADD CONSTRAINT `acquisti_ibfk_1` FOREIGN KEY (`acq_cli_id`) REFERENCES `clienti` (`cli_id`),
+  ADD CONSTRAINT `acquisti_ibfk_2` FOREIGN KEY (`acq_for_id`) REFERENCES `forme` (`for_id`),
+  ADD CONSTRAINT `acquisti_ibfk_3` FOREIGN KEY (`acq_tip_id`) REFERENCES `tipologie` (`tip_id`);
 
 --
 -- Limiti per la tabella `caseifici`
