@@ -9,7 +9,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   templateUrl: './googlemaps.component.html',
   styleUrl: './googlemaps.component.scss'
 })
-export class AppComponent implements OnInit {
+export class GooglemapsComponent implements OnInit {
   // Default center location (Rome, Italy)
   center: google.maps.LatLngLiteral = {lat: 41.9028, lng: 12.4964};
   zoom = 10;

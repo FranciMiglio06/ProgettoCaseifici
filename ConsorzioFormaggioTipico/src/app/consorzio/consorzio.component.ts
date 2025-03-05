@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { GalleriaModule} from 'primeng/galleria';
+import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
 
 @Component({
   selector: 'consorzio',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule,CaseificioComponent,HeaderComponent,GalleriaModule],
+  imports: [RouterOutlet, CommonModule,FormsModule,CaseificioComponent,HeaderComponent,GalleriaModule,GooglemapsComponent],
   templateUrl: './consorzio.component.html',
   styleUrl: './consorzio.component.scss'
 })
