@@ -10,6 +10,12 @@
     transition: background-color 0.3s ease;
 }
 
+::ng-deep p-galleria .p-galleria-item img {
+  width: 100% !important; 
+  height: 300px !important; /* Imposta un'altezza fissa */
+  object-fit: cover; /* Evita distorsioni e ritaglia le immagini se necessario */
+}
+
 ::ng-deep .p-galleria-indicator.p-highlight button {
     background-color: #FF4500 !important; /* Colore attivo */
 }
@@ -30,4 +36,21 @@
 ::ng-deep .p-galleria .p-galleria-item-next:hover {
   background-color: rgba(255, 204, 0, 0.8) !important; // Cambia colore al passaggio del mouse (giallo)
   color: black !important;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-container{
+  background-color: #FFD700;
+  width: 50%;
+  height: 500px;
 }
