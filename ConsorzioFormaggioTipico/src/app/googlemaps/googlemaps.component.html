@@ -1,25 +1,24 @@
-<div class="map-container">
-  <h1>Google Maps Integration</h1>
-  <google-map 
-    height="500px"
-    width="100%"
-    [center]="center"
-    [zoom]="zoom"
-    (mapClick)="handleMapClick($event)">
+<div class="controls">
+  <button (click)="addMarker()">Add Marker</button>
+  <button (click)="zoomIn()">Zoom In</button>
+  <button (click)="zoomOut()">Zoom Out</button>
+</div>
+
+<google-map 
+  height="500px"
+  width="100%"
+  [center]="center" 
+  [zoom]="zoom"
+  (mapClick)="handleMapClick($event)">
     
     <map-marker
-      *ngFor="let marker of markers"
-      [position]="marker.position"
-      [label]="marker.label"
-      [title]="marker.title"
-      (mapClick)="openInfoWindow(marker)">
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    (mapClick)="openInfoWindow(marker)">
     </map-marker>
     
-  </google-map>
+</google-map>
   
-  <div class="controls">
-    <button (click)="addMarker()">Add Marker</button>
-    <button (click)="zoomIn()">Zoom In</button>
-    <button (click)="zoomOut()">Zoom Out</button>
-  </div>
-</div>
+

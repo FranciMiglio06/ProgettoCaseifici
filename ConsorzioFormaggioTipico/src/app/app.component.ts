@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { ConsorzioComponent } from './consorzio/consorzio.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { GooglemapsComponent } from './googlemaps/googlemaps.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule,ConsorzioComponent,FooterComponent,HeaderComponent],
+  imports: [RouterOutlet, CommonModule,FormsModule,ConsorzioComponent,FooterComponent,HeaderComponent,GooglemapsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
