@@ -1,13 +1,22 @@
-<div class="flex w-full justify-content-between" >
+<div class="flex w-full justify-content-between">
     <div>
         <p-image src="/assets/images/logo.png" alt="Image" width="150" />
     </div>
-    <div class=" flex lg:align-items-center  align-items-stretch flex-wrap"
-    style="background-color: #D4A017; border-radius: 10px; height: 65px; width: 650px;">
-        <p-button label="Home" variant="text"/>
-        <p-button label="Caseifici"/>
-        <p-button label="Login"/>
-        <p-button label="Contatti"/>
-        <p-button icon="pi pi-shopping-cart"/>
+    <div class="flex justify-content-between flex-wrap container">
+        <div class="element">
+            <p-button [styleClass]="'custom-btn'" label="Home" (onMouseover)="onButtonHover($event)"/>
+        </div>
+        <div class="element">
+            <p-button [styleClass]="'custom-btn'" label="Caseifici" (onMouseover)="onButtonHover($event)"/>
+        </div>
+        <div class="element">
+            <p-button [styleClass]="'custom-btn'" label="Login" (onMouseover)="onButtonHover($event)"/>
+        </div>
+        <div class="element">
+            <p-button [styleClass]="'custom-btn'" label="Contatti" (onMouseover)="onButtonHover($event)"/>
+        </div>
+        <div class="element">
+            <p-button [styleClass]="'custom-btn'" icon="pi pi-shopping-cart" (onMouseover)="onButtonHover($event)"/>
+        </div>
     </div>
 </div>
