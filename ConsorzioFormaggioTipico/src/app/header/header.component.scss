@@ -1,0 +1,29 @@
+.container {
+    background-color: #D4A017;
+    border-radius: 10px;
+    height: 65px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.element {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    margin: 0 5px;
+}
+
+:host ::ng-deep .element .p-button {
+    background-color: #D4A017 !important; 
+    border-color: #c79516 !important;
+    border-width: 2px;
+    color: #000000 !important;
+}
+
+:host ::ng-deep .element .p-button:hover {
+    background-color: #c79516 !important;
+    border-color: #c79516 !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}

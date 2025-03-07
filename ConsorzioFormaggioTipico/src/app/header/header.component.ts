@@ -10,6 +10,11 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
 
+export class HeaderComponent {
+  onButtonHover(event: any) {
+    // l'hover button
+    event.target.style.backgroundColor = '#B8860B';
+  }
 }
+
