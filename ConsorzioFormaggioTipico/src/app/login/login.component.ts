@@ -13,5 +13,5 @@ import { ImageModule } from 'primeng/image';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-
+  showForm = true;
 }
