@@ -1,1 +1,23 @@
-<p>Caseificio</p>
+<h1>{{caseificio?.nome}}</h1>
+<div class="gallery-container">
+  <p-galleria
+      [value]="images"
+      [showItemNavigators]="true"
+      [showThumbnails]="false"
+      [showIndicators]="true"
+      [showItemNavigatorsOnHover]="true"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{ 'max-width': '320px' }">
+          <ng-template pTemplate="item" let-item>
+              <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+              <img [src]="item.thumbnailImageSrc" style="display: block;" />
+          </ng-template>
+  </p-galleria>
+</div>
+<p>{{caseificio?.des}}</p>
+<p><strong>Partita IVA:</strong> {{ caseificio?.partita_iva }}</p>
+  <p><strong>Indirizzo:</strong> {{ caseificio?.indirizzo }}</p>
+<button (click)="vediForme(caseificio?.code)"></button>

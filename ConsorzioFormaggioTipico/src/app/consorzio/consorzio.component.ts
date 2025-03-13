@@ -10,7 +10,7 @@ import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
 @Component({
   selector: 'consorzio',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule,CaseificioComponent,HeaderComponent,GalleriaModule,GooglemapsComponent],
+  imports: [ CommonModule,FormsModule,GalleriaModule,GooglemapsComponent],
   templateUrl: './consorzio.component.html',
   styleUrl: './consorzio.component.scss'
 })

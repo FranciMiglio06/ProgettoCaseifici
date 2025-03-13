@@ -30,6 +30,6 @@ export class CaseificiComponent implements OnInit {
   }
   caricaCaseificio(code: any): void {
     // Redirect al componente dei dettagli passando l'ID come parametro
-    this.router.navigate(['/dettagli-caseificio', code]);
+    this.router.navigate(['/caseificio', code]);
   }
 }

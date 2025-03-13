@@ -1,0 +1,9 @@
+<section *for="let forma of forme" class="forma-card">
+  <h2>{{ forma.for_nome }}</h2>
+  <p><strong>Data:</strong> {{ forma.for_data }}</p>
+  <p><strong>Numero Forma:</strong> {{ forma.for_num_forma }}</p>
+  <p><strong>Scelta:</strong> {{ forma.for_scelta }}</p>
+  <p><strong>Prezzo Reale:</strong> €{{ forma.for_sta_id }}</p>
+
+  <button (click)="tornaIndietro()">🔙 Torna ai Caseifici</button>
+</section>

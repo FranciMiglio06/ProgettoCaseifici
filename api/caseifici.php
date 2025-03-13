@@ -24,4 +24,5 @@ $caseifici[] = $caseificio1;
 $caseifici[] = $caseificio2;
 
 echo json_encode($caseifici);
+//echo json_encode(caseifici($conn));
 ?>

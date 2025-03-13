@@ -7,17 +7,17 @@ import { Caseificio } from '../models/caseificio.model';
   providedIn: 'root'
 })
 export class CaseificioService {
-  private apiUrl = 'http://localhost/progetto_caseifici/api.php'; // URL API
+  private apiUrl = 'http://localhost:4200/progettocaseifici/api';
 
   constructor(private http: HttpClient) {}
 
   // 🔹 Ottieni tutti i caseifici
   getCaseifici(): Observable<Caseificio[]> {
-    return this.http.get<Caseificio[]>(this.apiUrl);
+    return this.http.get<Caseificio[]>(this.apiUrl+"/caseifici");
   }
 
   // 🔹 Ottieni un caseificio per ID
   getCaseificioById(id: number): Observable<Caseificio> {
-    return this.http.get<Caseificio>(`${this.apiUrl}?id=${id}`);
+    return this.http.get<Caseificio>(`${this.apiUrl}/caseificio/?id=${id}`);
   }
 }

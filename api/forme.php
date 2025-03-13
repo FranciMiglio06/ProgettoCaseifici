@@ -4,5 +4,5 @@ $conn = require_once '../connessione.php';
 
 require_once '../metodi.php';
 
-echo json_encode(caseificio($conn,$_GET['id']));
+echo json_encode(getForme($conn,$_GET['id']));
 ?>
