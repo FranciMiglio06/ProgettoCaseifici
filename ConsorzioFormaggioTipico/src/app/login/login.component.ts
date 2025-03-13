@@ -6,7 +6,7 @@ import { ImageModule } from 'primeng/image';
 
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   standalone: true,
   imports: [CommonModule,FormsModule,ImageModule,ButtonModule],
   templateUrl: './login.component.html',

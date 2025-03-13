@@ -7,11 +7,12 @@ import { ConsorzioComponent } from './consorzio/consorzio.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { CarrelloComponent } from './carrello/carrello.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule,ConsorzioComponent,FooterComponent,HeaderComponent,LoginComponent],
+  imports: [RouterOutlet, CommonModule,FormsModule,ConsorzioComponent,FooterComponent,HeaderComponent,LoginComponent, CarrelloComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
