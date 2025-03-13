@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router'
+
 @Component({
   selector: 'header',
   standalone: true,
-  imports: [CommonModule,FormsModule,ImageModule,ButtonModule,Router],
+  imports: [CommonModule,FormsModule,ImageModule,ButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

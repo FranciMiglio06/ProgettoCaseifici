@@ -18,7 +18,7 @@
   .login-card {
     background-color: #8a4fff;
     border-radius: 30px;
-    padding: 2px; /* Thin border for outer card */
+    padding: 2px;
     width: 100%;
     max-width: 340px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -264,3 +264,9 @@
       padding: 25px 15px;
     }
   }
+  .logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}

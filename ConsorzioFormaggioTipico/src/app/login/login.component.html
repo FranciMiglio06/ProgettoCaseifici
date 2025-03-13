@@ -1,34 +1,30 @@
 <div class="login-container">
-    <div class="login-card">
-      <div class="login-card-inner">
-        <div class="logo-container">
-          <div class="cheese-logo"></div>
-          <h1>Consorzio di Formaggi Tipici</h1>
+  <div class="login-card">
+    <div class="login-card-inner">
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="Logo Consorzio" class="logo-img">
+        <h1>Consorzio di Formaggi Tipici</h1>
+      </div>
+
+      @if (showForm) {
+        <div class="form-group">
+          <input type="email" placeholder="Email">
         </div>
         
-        @if (showForm) {
-          <div class="form-group">
-            <input type="email" placeholder="Email">
-          </div>
-          
-          <div class="form-group">
-            <input type="password" placeholder="Password">
-          </div>
-          
-          <button class="sign-in-button">Sign in</button>
-          
-          <button class="google-sign-in-button">
-            Sign in with google
-          </button>
-          
-          <p class="register-prompt">
-            Non hai ancora un Account? <a href="#" (click)="$event.preventDefault()">Registrati</a>
-          </p>
-        } @else {
-          <div class="loading-indicator">
-            <div class="spinner"></div>
-          </div>
-        }
-      </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password">
+        </div>
+        
+        <button class="sign-in-button">Sign in</button>
+        
+        <p class="register-prompt">
+          Non hai ancora un Account? <a>Registrati</a>
+        </p>
+      } @else {
+        <div class="loading-indicator">
+          <div class="spinner"></div>
+        </div>
+      }
     </div>
   </div>
+</div>
