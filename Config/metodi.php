@@ -94,11 +94,13 @@ function getImage($code, $caseifici, $cas_id)
 }
 function compra($cliente, $tipo_forma, $forme, $tipologie)
 {
+    //metodo che crea un acquisto 
     $acquisto = new Acquisti($cliente, $tipo_forma, $forme, $tipologie);
     return $acquisto;
 }
 function getForma($conn, $idForma)
 {
+    //metodo che seleziona una forma in base all'id fornito
     $result = "SELECT * 
     FROM forme
     WHERE  for_id = ? "
@@ -110,6 +112,7 @@ function getForma($conn, $idForma)
 }
 function getForme($conn,$codeCaseificio)
 {
+    //metodo che seleziona tutte le forme in base al caseificio
     $result = "SELECT *
     FROM forme
     WHERE  for_dat_id = IN(SELECT dat_id FROM dati_giornalieri
