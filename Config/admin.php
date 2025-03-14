@@ -35,4 +35,27 @@ function modifycaseifici($conn,Caseifici $caseifici) {
     return $stmt->get_result();
     }
 
+    function getDatiGiornalieri($conn, $codeCaseificio) {
+        $query = "SELECT * FROM dati_giornalieri
+                  WHERE dat_data IN (
+                      SELECT DISTINCT dat_data 
+                      FROM dati_giornalieri 
+                      WHERE dat_id IN (
+                          SELECT for_dat_id 
+                          FROM forme 
+                          WHERE for_dat_id IN (
+                              SELECT dat_id FROM dati_giornalieri 
+                              WHERE dat_cas_code = ?
+                          )
+                      )
+                  )
+                  AND dat_cas_code = ?";
+    
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $codeCaseificio, $codeCaseificio);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    
+
 ?>
