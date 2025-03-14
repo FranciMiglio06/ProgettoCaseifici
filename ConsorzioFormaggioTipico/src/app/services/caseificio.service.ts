@@ -7,7 +7,7 @@ import { Caseificio } from '../models/caseificio.model';
   providedIn: 'root'
 })
 export class CaseificioService {
-  private apiUrl = 'http://localhost:4200/api';
+  private apiUrl = 'http://localhost:80/api';
 
   constructor(private http: HttpClient) {}
 

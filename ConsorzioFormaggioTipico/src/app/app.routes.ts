@@ -6,6 +6,7 @@ import { CarrelloComponent } from './carrello/carrello.component';
 import { ConsorzioComponent } from './consorzio/consorzio.component';
 import { CaseificioComponent } from './caseificio/caseificio.component';
 import { NgModule } from '@angular/core';
+import { DatigiornalieriComponent } from './datigiornalieri/datigiornalieri.component';
 
 export const routes: Routes = [
   { path: 'consorzio', component: ConsorzioComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'caseifici', component: CaseificiComponent },
   { path: 'contatti', component: ContattiComponent },
   { path: 'carrello', component: CarrelloComponent },
+  { path: 'datiGiornalieri/:id', component: DatigiornalieriComponent },
   { path: 'dettagli-caseificio/:id', component: CaseificioComponent }
 ];
 @NgModule({

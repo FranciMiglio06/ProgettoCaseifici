@@ -21,11 +21,9 @@ function caseificio($id, $conn)
     return $caseificio;
 }
 
-/*function isAdmin(){
-    if ($caseificio['cas_code'] == $cliente['cli_cas']){ 
-        return true;
-    }  else {return false;}
-}*/
+function isAdmin($idCliente,$codeCaseificio){
+    return null;
+}
 
 function createCliente(Cliente $cliente, $conn)
 {

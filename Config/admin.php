@@ -62,7 +62,17 @@ function modifycaseifici($conn,Caseifici $caseifici) {
         $stmt->execute();
         return $stmt->get_result();
     }
-
+    function getDatoGiornaliero($conn, $codeCaseificio,$data) {
+        //Query per selezionare tutti i dati giornalieri relativi al caseificio specificato e alle forme acquistate/vendute durante la giornata
+        $query = "SELECT * FROM dati_giornalieri
+                  WHERE dat_cas_code = ?
+                  AND dat_data=?";
+    
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $codeCaseificio, $data);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
     
     function eliminaCaseifici($conn, Caseifici $c) {
         $stmt = $conn->prepare("DELETE FROM caseifici WHERE cas_code = ?");
@@ -136,21 +146,21 @@ function modifycaseifici($conn,Caseifici $caseifici) {
     
     function createForme($conn, Forme $forme) {
         $stmt = $conn->prepare("INSERT INTO forme (for_id, for_data, for_num_forma, for_nome, for_peso, for_scelta, for_stag_eff, for_venduta, for_data_acquisto, for_dat_id, for_prezzo_reale, for_tip_id, for_sta_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssisssisiiisi", $forme->id, $forme->data, $forme->num_forma, $forme->nome, $forme->peso, $forme->scelta, $forme->stag_eff, $forme->venduta, $forme->data_acquisto, $forme->dat_id, $forme->prezzo_reale, $forme->tip_id, $forme->sta_id);
+        $stmt->bind_param("ssisssisiiisi", $forme->for_id, $forme->for_data, $forme->for_num_forma, $forme->for_nome, $forme->for_peso, $forme->for_scelta, $forme->for_stag_eff, $forme->for_venduta, $forme->for_data_acquisto, $forme->for_dat_id, $forme->for_prezzo_reale, $forme->for_tip_id, $forme->for_sta_id);
         $stmt->execute();
         return $stmt->get_result();
     }
     
     function modifyForme($conn, Forme $forme) {
         $stmt = $conn->prepare("UPDATE forme SET for_data = ?, for_num_forma = ?, for_nome = ?, for_peso = ?, for_scelta = ?, for_stag_eff = ?, for_venduta = ?, for_data_acquisto = ?, for_dat_id = ?, for_prezzo_reale = ?, for_tip_id = ?, for_sta_id = ? WHERE for_id = ?");
-        $stmt->bind_param("sisssisiiisis", $forme->data, $forme->num_forma, $forme->nome, $forme->peso, $forme->scelta, $forme->stag_eff, $forme->venduta, $forme->data_acquisto, $forme->dat_id, $forme->prezzo_reale, $forme->tip_id, $forme->sta_id, $forme->id);
+        $stmt->bind_param("sisssisiiisis", $forme->for_data, $forme->for_num_forma, $forme->for_nome, $forme->for_peso, $forme->for_scelta, $forme->for_stag_eff, $forme->for_venduta, $forme->for_data_acquisto, $forme->for_dat_id, $forme->for_prezzo_reale, $forme->for_tip_id, $forme->for_sta_id, $forme->for_id);
         $stmt->execute();
         return $stmt->get_result();
     }
     
     function deleteForme($conn, Forme $forme) {
         $stmt = $conn->prepare("DELETE FROM forme WHERE for_id = ?");
-        $stmt->bind_param("s", $forme->id);
+        $stmt->bind_param("s", $forme->for_id);
         $stmt->execute();
         return $stmt->get_result();
     }

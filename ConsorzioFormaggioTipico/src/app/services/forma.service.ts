@@ -7,7 +7,7 @@ import { Forma } from '../models/forma.model'; // Assicurati che il percorso sia
   providedIn: 'root'
 })
 export class FormaService {
-  private apiUrl = 'http://localhost/path/to/api'; // Cambia con il percorso corretto
+  private apiUrl = 'http://localhost:80/api'; // Cambia con il percorso corretto
 
   private http = inject(HttpClient);
 

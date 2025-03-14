@@ -1,1 +1,12 @@
-<p>datigiornalieri works!</p>
+<div class="calendar-container">
+  <div class="calendar-grid">
+    <div *for="let dato of datiGiornalieri" class="calendar-card">
+      <h3>{{ dato.dat_data | date:'dd/MM/yyyy' }}</h3>
+      <p><strong>Forme prodotte:</strong> {{ dato.dat_num_forme_prod }}</p>
+      <p><strong>Forme vendute:</strong> {{ dato.dat_num_forme_vendute }}</p>
+      <p><strong>Latte lavorato:</strong> {{ dato.dat_latte_lav }} L</p>
+      <p><strong>Latte per formaggio:</strong> {{ dato.dat_latte_formaggio }} L</p>
+      <button (click)="aggiungiDati()">Aggiungi</button>
+    </div>
+  </div>
+</div>
