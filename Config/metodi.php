@@ -99,12 +99,25 @@ function compra($cliente, $tipo_forma, $forme, $tipologie)
 }
 function getForma($conn, $idForma)
 {
-    $forma = 0;
-    return $forma;//da finire//
+    $result = "SELECT * 
+    FROM forme
+    WHERE  for_id = ? "
+    ;
+    $stmt = $conn->prepare($result);
+    $stmt->bind_param("i", $idForma);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 function getForme($conn,$codeCaseificio)
 {
-    $forme = 0;
-    return $forme;//da finire//
+    $result = "SELECT *
+    FROM forme
+    WHERE  for_dat_id = IN(SELECT dat_id FROM dati_giornalieri
+                                WHERE dat_cas_code = ?)"; 
+    ;
+    $stmt = $conn->prepare($result);
+    $stmt->bind_param("i", $codeCaseificio);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 
