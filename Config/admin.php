@@ -7,12 +7,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 include 'funzioni.php'; // Include il file con i metodi
 include 'classi.php';
-//function createCaseificio($conn, $nome, $dex, $partita_iva,$indirizzo,$cli_id) {
+ /*function createCaseificio($conn, $nome, $dex, $partita_iva,$indirizzo,$cli_id) {
     $result = $conn->query("SELECT cas_code FROM caseifici ORDER BY cas_code");
     $usedIds = [];
     while ($row = $result->fetch_assoc()) {
         $usedIds[] = $row['cas_code'];
     }
+}
 
     $newId = 1;
     for ($i = 1; $i <= count($usedIds) + 1; $i++) {
@@ -25,12 +26,36 @@ include 'classi.php';
     $stmt = $conn->prepare("INSERT INTO caseifici (cas_code, cas_nome, cas_dex, cas_partita_iva,cas_indirizzo,cas_cli_id) VALUES (?, ?, ?, ? , ? , ? )");
     $stmt->bind_param("issssi", $newId, $nome, $dex, $partita_iva,$indirizzo,$cli_id);
     $stmt->execute();
-//}
+}*/
 
-function modifycaseifici(Caseifici $caseifici) {
+function modifycaseifici($conn,Caseifici $caseifici) {
     $stmt = $conn->prepare("UPDATE caseifici SET cas_nome = ?, cas_dex = ?,cas_partita_iva = ? ,cas_indirizzo = ?,cas_cli_id = ? WHERE cas_code= ?");
-    $stmt->bind_param($caseifici->code, $nome, $dex, $partita_iva, $indirizzo, $cli_id);
+    $stmt->bind_param("issssi",$caseifici->code,$caseifici->nome, $caseifici->dex, $caseifici->partita_iva, $caseifici->indirizzo, $caseifici->cli_id);
     $stmt->execute();
-}
+    return $stmt->get_result();
+    }
+
+    function getDatiGiornalieri($conn, $codeCaseificio) {
+        $query = "SELECT * FROM dati_giornalieri
+                  WHERE dat_data IN (
+                      SELECT DISTINCT dat_data 
+                      FROM dati_giornalieri 
+                      WHERE dat_id IN (
+                          SELECT for_dat_id 
+                          FROM forme 
+                          WHERE for_dat_id IN (
+                              SELECT dat_id FROM dati_giornalieri 
+                              WHERE dat_cas_code = ?
+                          )
+                      )
+                  )
+                  AND dat_cas_code = ?";
+    
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $codeCaseificio, $codeCaseificio);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    
 
 ?>
