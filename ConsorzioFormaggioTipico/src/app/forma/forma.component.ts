@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormaService } from '../services/forma.service';
 
 @Component({
-  selector: 'app-forma',
+  selector: 'forma',
   standalone: true,
   imports: [],
   templateUrl: './forma.component.html',

@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-caseifici',
+  selector: 'caseifici',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './caseifici.component.html',
   styleUrl: './caseifici.component.scss'
 })
@@ -17,7 +17,7 @@ export class CaseificiComponent implements OnInit {
 
   constructor(private caseificioService: CaseificioService,
     private router: Router
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.caricaTuttiICaseifici();
   }

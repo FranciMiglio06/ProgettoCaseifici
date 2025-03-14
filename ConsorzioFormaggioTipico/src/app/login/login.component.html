@@ -6,7 +6,7 @@
         <h1>Consorzio di Formaggi Tipici</h1>
       </div>
 
-      @if (showForm) {
+      @if (isLogging) {
         <div class="form-group">
           <input type="email" placeholder="Email">
         </div>
@@ -21,9 +21,43 @@
           Non hai ancora un Account? <a>Registrati</a>
         </p>
       } @else {
-        <div class="loading-indicator">
-          <div class="spinner"></div>
+        <div class="form-group">
+          <input type="text" placeholder="Username">
         </div>
+
+        <div class="form-group">
+          <input type="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Nome">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Cognome">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Indirizzo">
+        </div>
+
+        <div class="form-group">
+          <input type="email" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Numero di Telefono">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Partita Iva">
+        </div>
+
+        <button class="register-button">Registrati</button>
+        
+        <p class="register-prompt">
+          Hai già un Account? <a>Vai al Login</a>
+        </p>
       }
     </div>
   </div>
