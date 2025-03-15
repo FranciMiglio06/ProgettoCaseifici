@@ -15,7 +15,8 @@ export const routes: Routes = [
   { path: 'contatti', component: ContattiComponent },
   { path: 'carrello', component: CarrelloComponent },
   { path: 'datiGiornalieri/:id', component: DatigiornalieriComponent },
-  { path: 'dettagli-caseificio/:id', component: CaseificioComponent }
+  { path: 'dettagli-caseificio/:id', component: CaseificioComponent },
+  { path: '**', redirectTo: 'consorzio' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
