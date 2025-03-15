@@ -4,11 +4,13 @@ import { CaseificioService } from '../services/caseificio.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'caseifici',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,HttpClientModule],
+  providers:[CaseificioService],
   templateUrl: './caseifici.component.html',
   styleUrl: './caseifici.component.scss'
 })

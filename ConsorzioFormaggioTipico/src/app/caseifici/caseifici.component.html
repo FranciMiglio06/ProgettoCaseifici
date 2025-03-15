@@ -1,8 +1,9 @@
 <h1>Caseifici</h1>
-<section *for="let caseificio of caseifici" class="caseificio-card">
+<section *ngFor="let caseificio of caseifici()" class="caseificio-card">
   <h2>{{ caseificio.nome }}</h2>
   <p><strong>Descrizione:</strong> {{ caseificio.des }}</p>
   <p><strong>Partita IVA:</strong> {{ caseificio.partita_iva }}</p>
   <p><strong>Indirizzo:</strong> {{ caseificio.indirizzo }}</p>
   <button (click)="caricaCaseificio(caseificio.code)">Vedi Dettagli</button>
 </section>
+
