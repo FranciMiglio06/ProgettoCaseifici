@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Gestione Caseificio</h1>
+
+    <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" />
+
+        <label for="indirizzo">Indirizzo:</label>
+        <input type="text" id="indirizzo" name="indirizzo" />
+
+        <label for="descrizione">Descrizione:</label>
+        <textarea id="descrizione" name="descrizione"></textarea>
+
+        <label for="partita-iva">Contatti:</label>
+        <input type="text" id="partita-iva" name="partita-iva" />
+
+        <!-- Gestione immagini -->
+        <div class="image-manager">
+            <h3>Gestione Immagini</h3>
+            
+            <!-- Area immagini caricate -->
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src = "/assets/images/logo.png" alt="Immagine Caseificio" preview>
+                    <p-button icon="pi pi-trash" severity="danger"></p-button>
+                </div>
+            </div>
+
+            <!-- Upload immagini -->
+            <p-fileUpload 
+                mode="basic" 
+                accept="image/*" 
+                chooseLabel="Carica Immagine">
+            </p-fileUpload>
+        </div>
+
+        <div class="actions">
+            <p-button label="Salva" icon="pi pi-check" class="save-btn"></p-button>
+            <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning"></p-button>
+            <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger"></p-button>
+        </div>
+    </form>
+</div>

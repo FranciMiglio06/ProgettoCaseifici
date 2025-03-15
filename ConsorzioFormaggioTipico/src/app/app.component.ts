@@ -9,13 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { CarrelloComponent } from './carrello/carrello.component';
 import { FormaComponent } from './forma/forma.component';
 import { CaseificiComponent } from './caseifici/caseifici.component';
+import { CaseificioEditorComponent } from './caseificio-editor/caseificio-editor.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, CommonModule,FormsModule,ConsorzioComponent,
     FooterComponent,HeaderComponent,LoginComponent, CarrelloComponent,
-    FormaComponent,CaseificiComponent],
+    FormaComponent,CaseificiComponent,CaseificioEditorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
