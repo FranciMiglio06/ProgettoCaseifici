@@ -1,0 +1,80 @@
+/* Contenitore per disporre le card sulla stessa riga */
+.caseificio-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra le card orizzontalmente */
+  gap: 20px; /* Spazio tra le card */
+}
+
+/* Stile per la card del caseificio */
+.caseificio-card {
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  /* Aggiungi una leggera animazione alla card */
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Header della card (nome del caseificio) */
+.card-header {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Corpo della card (descrizione, partita IVA, indirizzo) */
+.card-body {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card-body p {
+  margin: 5px 0;
+}
+
+.card-body strong {
+  font-weight: bold;
+}
+
+/* Footer della card (pulsante per vedere i dettagli) */
+.card-footer {
+  text-align: center;
+}
+
+.card-footer button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-footer button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsività: Rendi le card più piccole sui dispositivi mobile */
+@media (max-width: 768px) {
+  .caseificio-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .caseificio-card {
+    width: 100%;
+    padding: 15px;
+  }
+}

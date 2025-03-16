@@ -1,4 +1,5 @@
-<h1>{{caseificio?.nome}}</h1>
+<h1 class="caseificio-title">{{caseificio?.cas_nome}}</h1>
+
 <div class="gallery-container">
   <p-galleria
       [value]="images"
@@ -8,16 +9,22 @@
       [showItemNavigatorsOnHover]="true"
       [circular]="true"
       [responsiveOptions]="responsiveOptions"
-      [containerStyle]="{ 'max-width': '320px' }">
-          <ng-template pTemplate="item" let-item>
-              <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
-          </ng-template>
-          <ng-template pTemplate="thumbnail" let-item>
-              <img [src]="item.thumbnailImageSrc" style="display: block;" />
-          </ng-template>
+      [containerStyle]="{ 'max-width': '320px', 'box-shadow': '0 4px 10px rgba(0, 0, 0, 0.1)', 'border-radius': '15px' }">
+      <ng-template pTemplate="item" let-item>
+          <img [src]="item.itemImageSrc" style="width: 100%; display: block; border-radius: 15px;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+          <img [src]="item.thumbnailImageSrc" style="display: block; border-radius: 10px; margin-right: 10px;"/>
+      </ng-template>
   </p-galleria>
 </div>
-<p>{{caseificio?.des}}</p>
-<p><strong>Partita IVA:</strong> {{ caseificio?.partita_iva }}</p>
-  <p><strong>Indirizzo:</strong> {{ caseificio?.indirizzo }}</p>
-<button (click)="vediForme(caseificio?.code)"></button>
+
+<div class="caseificio-info">
+  <p class="caseificio-description">{{caseificio?.cas_dex}}</p>
+  <p><strong>Partita IVA:</strong> {{ caseificio?.cas_partita_iva }}</p>
+  <p><strong>Indirizzo:</strong> {{ caseificio?.cas_indirizzo }}</p>
+</div>
+
+<button class="vedi-forme-btn" (click)="vediForme(caseificio?.cas_code)">
+  Vedi Forme
+</button>

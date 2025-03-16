@@ -7,6 +7,8 @@ import { ConsorzioComponent } from './consorzio/consorzio.component';
 import { CaseificioComponent } from './caseificio/caseificio.component';
 import { NgModule } from '@angular/core';
 import { DatigiornalieriComponent } from './datigiornalieri/datigiornalieri.component';
+import { FormeComponent } from './forme/forme.component';
+import { FormaComponent } from './forma/forma.component';
 
 export const routes: Routes = [
   { path: 'consorzio', component: ConsorzioComponent },
@@ -15,7 +17,9 @@ export const routes: Routes = [
   { path: 'contatti', component: ContattiComponent },
   { path: 'carrello', component: CarrelloComponent },
   { path: 'datiGiornalieri/:id', component: DatigiornalieriComponent },
-  { path: 'dettagli-caseificio/:id', component: CaseificioComponent },
+  { path: 'caseificio/:id', component: CaseificioComponent },
+  { path: 'forme/:id', component: FormeComponent},
+  { path: 'forma/:id', component: FormaComponent},
   { path: '**', redirectTo: 'consorzio' }
 ];
 @NgModule({

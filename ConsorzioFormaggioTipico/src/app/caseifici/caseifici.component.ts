@@ -27,11 +27,11 @@ export class CaseificiComponent implements OnInit {
   // 🔹 Metodo per caricare tutti i caseifici
   caricaTuttiICaseifici(): void {
     this.caseificioService.getCaseifici().subscribe(data => {
-      this.caseifici.set(data); // Aggiorna il Signal
+      this.caseifici.set(data);
     });
   }
   caricaCaseificio(code: any): void {
     // Redirect al componente dei dettagli passando l'ID come parametro
-    this.router.navigate(['/caseificio', code]);
+    this.router.navigate(['caseificio', code]);
   }
 }

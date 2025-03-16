@@ -1,28 +1,20 @@
 <?php
 header('Content-Type: application/json');
-require_once 'config/classi.php'; // Includi le classi
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS"); 
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); 
+header("Access-Control-Allow-Credentials: true"); 
 
-$caseifici = [];
+$conn = require_once(__DIR__ . '/../config/connessione.php');
+require_once(__DIR__ . '/../config/metodi.php');
 
-$caseificio1 = new Caseifici();
-$caseificio1->code = "C123";
-$caseificio1->nome = "Caseificio Alpino";
-$caseificio1->des = "Produzione formaggi tipici";
-$caseificio1->partita_iva = "IT12345678901";
-$caseificio1->indirizzo = "Via Roma 10, Milano";
-$caseificio1->cli_id = 1;
 
-$caseificio2 = new Caseifici();
-$caseificio2->code = "C456";
-$caseificio2->nome = "Caseificio Montano";
-$caseificio2->des = "Specialità alpine";
-$caseificio2->partita_iva = "IT98765432100";
-$caseificio2->indirizzo = "Via Monti 5, Torino";
-$caseificio2->cli_id = 2;
+$dati = caseifici($conn);
 
-$caseifici[] = $caseificio1;
-$caseifici[] = $caseificio2;
+if ($dati === false || empty($dati)) {
+    echo json_encode(["errore" => "Nessun dato trovato o errore nel database"]);
+} else {
+    echo json_encode($dati);
+}
 
-echo json_encode($caseifici);
-//echo json_encode(caseifici($conn));
 ?>

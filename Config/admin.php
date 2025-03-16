@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+/*if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header('Location: login.html');
     exit();
-    }
+    }*/
 
 include 'funzioni.php'; // Include il file con i metodi
 include 'classi.php';

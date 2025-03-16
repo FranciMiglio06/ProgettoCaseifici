@@ -1,27 +1,33 @@
 <?php
 session_start();
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+/*if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header('Location: login.html');
     exit();
-}
+}*/
 include 'classi.php';
 
 function caseifici($conn)
 {
-    $sql = "SELECT *FROM caseifici";
+    $sql = "SELECT * FROM caseifici";
     $risultato = $conn->query($sql);
-    $caseifici = $risultato->fetch_assoc(MYSQLI_ASSOC);
+
+    $caseifici = [];
+    while ($row = $risultato->fetch_assoc()) {
+        $caseifici[] = $row;
+    }
+
     return $caseifici;
 }
-function caseificio($id, $conn)
+function caseificio($conn, $id)
 {
-    $sql = "SELECT * FROM caseifici WHERE id = $id";
+    $sql = "SELECT * FROM caseifici WHERE cas_code = $id";
     $risultato = $conn->query($sql);
     $caseificio = $risultato->fetch_assoc();
     return $caseificio;
 }
 
-function isAdmin($idCliente,$codeCaseificio){
+function isAdmin($idCliente, $codeCaseificio)
+{
     return null;
 }
 
@@ -104,21 +110,30 @@ function getForma($conn, $idForma)
     WHERE  for_id = ? "
     ;
     $stmt = $conn->prepare($result);
-    $stmt->bind_param("i", $idForma);
+    $stmt->bind_param("s", $idForma);
     $stmt->execute();
-    return $stmt->get_result();
+    $res= $stmt->get_result();
+    $data= $res->fetch_assoc();
+
+    return $data;
 }
-function getForme($conn,$codeCaseificio)
+
+// Metodo che seleziona tutte le forme in base al caseificio
+function getForme($conn, $codeCaseificio)
 {
-    //metodo che seleziona tutte le forme in base al caseificio
-    $result = "SELECT *
-    FROM forme
-    WHERE  for_dat_id = IN(SELECT dat_id FROM dati_giornalieri
-                                WHERE dat_cas_code = ?)"; 
-    ;
+    $result = "SELECT * FROM forme WHERE for_dat_id IN (
+                   SELECT dat_id FROM dati_giornalieri WHERE dat_cas_code = ?
+               )";
+
     $stmt = $conn->prepare($result);
     $stmt->bind_param("i", $codeCaseificio);
     $stmt->execute();
-    return $stmt->get_result();
+    $res = $stmt->get_result();
+
+    // DEBUG: Stampiamo il risultato per verificare
+    $data = $res->fetch_all(MYSQLI_ASSOC);
+
+    return $data;
 }
+
 

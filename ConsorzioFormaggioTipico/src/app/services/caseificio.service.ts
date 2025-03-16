@@ -17,7 +17,7 @@ export class CaseificioService {
   }
 
   // 🔹 Ottieni un caseificio per ID
-  getCaseificioById(id: number): Observable<Caseificio> {
-    return this.http.get<Caseificio>(`${this.apiUrl}/caseificio.php/?id=${id}`);
+  getCaseificioById(id: any): Observable<Caseificio> {
+    return this.http.get<Caseificio>(`${this.apiUrl}/caseificio.php?id=${id}`);
   }
 }

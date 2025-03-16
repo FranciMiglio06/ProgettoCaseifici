@@ -2,11 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Forma } from '../models/forma.model';
 import { ActivatedRoute } from '@angular/router';
 import { FormaService } from '../services/forma.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'forma',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule,CommonModule],
+  providers:[FormaService],
   templateUrl: './forma.component.html',
   styleUrl: './forma.component.scss'
 })

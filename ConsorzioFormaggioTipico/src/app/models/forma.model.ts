@@ -1,11 +1,14 @@
 export interface Forma {
-  for_id: number;
-  for_nome:string;
+  for_id: string;
   for_data: string;
+  for_num_forma: number;
+  for_nome: string;
   for_peso: number;
-  for_numero_forma: string;
   for_scelta: string;
-  for_stag_eff: string;
-  for_venduta: boolean;
-  for_sta_id: number;
-}
+  for_stag_eff: number;
+  for_venduta: number;
+  for_data_acquisto: string | null;
+  for_dat_id: number;
+  for_prezzo_reale: number;
+  for_tip_id: number;
+  for_sta_id: string;  }

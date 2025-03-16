@@ -19,10 +19,10 @@ export class FormaService {
   }
 
   // Ottenere una forma specifica per ID
-  getFormaById(id: number): Observable<Forma> {
+  getFormaById(id: any): Observable<Forma> {
     return this.http.get<Forma>(`${this.apiUrl}/forma.php?id=${id}`);
   }
-  getFormeByCaseificioId(caseificioId: number): Observable<Forma[]> {
+  getFormeCaseificio(caseificioId: string): Observable<Forma[]> {
     return this.http.get<Forma[]>(`${this.apiUrl}/forme.php?id=${caseificioId}`);
   }
 }

@@ -3,11 +3,13 @@ import { Caseificio } from '../models/caseificio.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CaseificioService } from '../services/caseificio.service';
 import { GalleriaModule } from 'primeng/galleria';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'caseificio',
   standalone: true,
-  imports: [GalleriaModule],
+  imports: [GalleriaModule,HttpClientModule],
+    providers:[CaseificioService],
   templateUrl: './caseificio.component.html',
   styleUrl: './caseificio.component.scss'
 })
@@ -57,7 +59,7 @@ export class CaseificioComponent implements OnInit {
     });
   }
   vediForme(code: any){
-    this.router.navigate(['/caseificio', code, 'forme']);
+    this.router.navigate(['forme', code]);
 
   }
 }

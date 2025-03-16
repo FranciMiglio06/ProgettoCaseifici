@@ -1,17 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Forma } from '../models/forma.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormaService } from '../services/forma.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-forme',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule,CommonModule],
+      providers:[FormaService],
   templateUrl: './forme.component.html',
   styleUrl: './forme.component.scss'
 })
 export class FormeComponent implements OnInit {
-  forme: Forma[] = [];
+  forme = signal<Forma[]>([]);
   caseificioId!: number;
 
   private route = inject(ActivatedRoute);
@@ -28,19 +31,19 @@ export class FormeComponent implements OnInit {
     });
   }
 
-  caricaFormePerCaseificio(id: number): void {
-    this.formeService.getFormeByCaseificioId(id).subscribe(data => {
-      this.forme = data;
+  caricaFormePerCaseificio(id: any): void {
+    this.formeService.getFormeCaseificio(id).subscribe(data => {
+      this.forme.set(data);
     });
   }
 
   // Naviga ai dettagli di una forma specifica
-  vaiADettagliForma(id: number): void {
-    this.router.navigate(['/dettagli-forma', id]);
+  vaiADettagliForma(id: any): void {
+    this.router.navigate(['forma', id]);
   }
 
   // Torna alla lista dei caseifici
   tornaIndietro(): void {
-    this.router.navigate(['/lista-caseifici']);
+    this.router.navigate(['caseifici']);
   }
 }
