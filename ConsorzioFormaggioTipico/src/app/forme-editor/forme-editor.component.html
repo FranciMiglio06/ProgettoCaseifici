@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Gestione Forme</h1>
+
+    <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" />
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" />
+
+        <label for="numero-forma">Numero della Forma:</label>
+        <input type="number" id="numero-forma" name="numero-forma" />
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" step="0.01" />
+
+        <label for="enum">Tipo:</label>
+        <select id="enum" name="enum">
+            <option value="prima">Prima</option>
+            <option value="seconda">Seconda</option>
+        </select>
+
+        <label for="stagionatura">Stagionatura Effettiva:</label>
+        <input type="number" id="stagionatura" name="stagionatura" />
+
+        <label for="venduta">Venduta:</label>
+        <select id="venduta" name="venduta">
+            <option value="0">No</option>
+            <option value="1">Sì</option>
+        </select>
+
+        <label for="data-acquisto">Data di Acquisto:</label>
+        <input type="date" id="data-acquisto" name="data-acquisto" />
+
+        <label for="prezzo-reale">Prezzo Reale:</label>
+        <input type="number" id="prezzo-reale" name="prezzo-reale" step="0.01" />
+
+        <div class="actions">
+            <p-button label="Salva" icon="pi pi-check" class="save-btn"></p-button>
+            <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning"></p-button>
+            <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger"></p-button>
+        </div>
+    </form>
+</div>
