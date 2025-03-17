@@ -1,57 +1,143 @@
-::ng-deep .p-galleria-indicators {
-    bottom: 10px; /* Regola la posizione */
+/* Generale */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
-::ng-deep .p-galleria-indicator button {
-    background-color: #FFD700 !important; /* Cambia colore */
-    width: 12px; /* Personalizza dimensione */
-    height: 12px;
-    border-radius: 50%; /* Rendi gli indicatori circolari */
-    transition: background-color 0.3s ease;
-}
-
-::ng-deep p-galleria .p-galleria-item img {
-  width: 100% !important; 
-  height: 300px !important; /* Imposta un'altezza fissa */
-  object-fit: cover; /* Evita distorsioni e ritaglia le immagini se necessario */
-}
-
-::ng-deep .p-galleria-indicator.p-highlight button {
-    background-color: #FF4500 !important; /* Colore attivo */
-}
-
-::ng-deep .p-galleria .p-galleria-item-prev,
-::ng-deep .p-galleria .p-galleria-item-next {
-  background-color: rgba(0, 0, 0, 0.5) !important; // Sfondo semi-trasparente
-  color: white !important; // Colore icona freccia
-  border-radius: 50%; // Rende i pulsanti rotondi
-  width: 40px; // Dimensione pulsante
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-::ng-deep .p-galleria .p-galleria-item-prev:hover,
-::ng-deep .p-galleria .p-galleria-item-next:hover {
-  background-color: rgba(255, 204, 0, 0.8) !important; // Cambia colore al passaggio del mouse (giallo)
-  color: black !important;
-}
-
-.container{
-  display: flex;
-  justify-content: space-between;
-}
-
+/* Sezione galleria */
 .gallery-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  margin-bottom: 30px;
 }
 
-.map-container{
-  background-color: #FFD700;
-  width: 50%;
-  height: 500px;
+.gallery-item {
+  width: 100%;
+  display: block;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.gallery-thumbnail {
+  width: 100%;
+  display: block;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Barra del titolo */
+.header-bar {
+  background-color: #004d00;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Descrizione Consorzio */
+.description {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.description h3 {
+  font-size: 20px;
+  color: #004d00;
+}
+
+/* Sezione Mappa */
+.map-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.map-container p {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+/* Lista Membri */
+.members-list {
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.members-list h4 {
+  font-size: 22px;
+  color: #004d00;
+  margin-bottom: 15px;
+}
+
+.members-list ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.members-list ul li {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Media Queries per Dispositivi Mobili */
+@media (max-width: 768px) {
+  .gallery-container {
+      max-width: 100%;
+  }
+
+  .description {
+      font-size: 14px;
+      padding: 15px;
+  }
+
+  .description h3 {
+      font-size: 18px;
+  }
+
+  .map-container {
+      height: 250px;
+  }
+
+  .members-list h4 {
+      font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-bar {
+      font-size: 18px;
+      padding: 15px;
+  }
+
+  .description {
+      font-size: 13px;
+      padding: 10px;
+  }
+
+  .members-list h4 {
+      font-size: 16px;
+  }
 }

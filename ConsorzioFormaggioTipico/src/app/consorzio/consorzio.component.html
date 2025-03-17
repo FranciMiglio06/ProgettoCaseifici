@@ -1,26 +1,58 @@
 <div class="gallery-container">
-    <p-galleria 
-        [value]="images" 
-        [showItemNavigators]="true" 
-        [showThumbnails]="false" 
-        [showIndicators]="true" 
-        [showItemNavigatorsOnHover]="true" 
-        [circular]="true"
-        [responsiveOptions]="responsiveOptions" 
-        [containerStyle]="{ 'max-width': '320px' }">
-            <ng-template pTemplate="item" let-item>
-                <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
-            </ng-template>
-            <ng-template pTemplate="thumbnail" let-item>
-                <img [src]="item.thumbnailImageSrc" style="display: block;" />
-            </ng-template>
-    </p-galleria>   
+  <p-galleria
+      [value]="images"
+      [showItemNavigators]="true"
+      [showThumbnails]="false"
+      [showIndicators]="true"
+      [showItemNavigatorsOnHover]="true"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{ 'max-width': '600px' }">
+      <ng-template pTemplate="item" let-item>
+          <img [src]="item.itemImageSrc" class="gallery-item" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+          <img [src]="item.thumbnailImageSrc" class="gallery-thumbnail" />
+      </ng-template>
+  </p-galleria>
 </div>
-<div class="container">
-    <div style="background-color: aqua; width: 50%; height: 30px;">
 
-    </div>
-    <div class="map-container">
-        <!--<googlemaps></googlemaps>-->
-    </div>
+<div class="container">
+  <!-- Introduzione al consorzio -->
+  <div class="header-bar">
+      <h3>Consorzio di Formaggi Tipici</h3>
+  </div>
+
+  <!-- Descrizione del consorzio -->
+  <div class="description">
+      <p>
+          Il Consorzio di Formaggi Tipici è un'organizzazione che unisce produttori di formaggi tradizionali provenienti dalle
+          migliori fattorie e caseifici. Il nostro obiettivo è tutelare la qualità e la tradizione, garantendo ai consumatori
+          prodotti freschi e artigianali.
+      </p>
+      <p>
+          Attraverso il nostro consorzio, promuoviamo la cultura del formaggio tipico, valorizzando le peculiarità locali e
+          rispettando metodi di produzione tradizionali che esaltano il gusto e la qualità dei nostri prodotti.
+      </p>
+  </div>
+
+  <!-- Sezione della mappa -->
+  <div class="map-container">
+      <p>
+          Scopri la nostra mappa con la posizione dei caseifici e dei produttori del consorzio. Potrai visitare i nostri
+          produttori e assistere alla creazione di prelibatezze casearie.
+      </p>
+      <!-- In futuro puoi inserire il Google Maps qui -->
+      <!--<googlemaps></googlemaps>-->
+  </div>
+
+  <!-- Descrizione dei membri del consorzio -->
+  <div class="members-list">
+      <h4>I Nostri Membri</h4>
+      <ul>
+          <li><strong>Caseificio La Tradizione</strong>: Situato nelle colline toscane, specializzato in formaggi stagionati.</li>
+          <li><strong>Formaggi Delizia</strong>: Azienda che produce formaggi freschi e cremosi con il latte di bufala.</li>
+          <li><strong>Caseificio Verde Collina</strong>: Ispirato ai metodi tradizionali di produzione del formaggio, con latte proveniente da allevamenti biologici.</li>
+      </ul>
+  </div>
 </div>
