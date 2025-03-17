@@ -6,59 +6,64 @@
         <h1>Consorzio di Formaggi Tipici</h1>
       </div>
 
-      @if (isLogging) {
+      <!-- Sezione Login -->
+      <div *ngIf="isLogging; else registerTemplate">
         <div class="form-group">
-          <input type="email" placeholder="Email">
+          <input type="email" [(ngModel)]="cliente.cli_username" placeholder="Username">
         </div>
-        
+
         <div class="form-group">
-          <input type="password" placeholder="Password">
+          <input type="password" [(ngModel)]="cliente.cli_password" placeholder="Password">
         </div>
-        
-        <button class="sign-in-button">Sign in</button>
-        
+
+        <button (click)="accedi()" class="sign-in-button">Accedi</button>
+
         <p class="register-prompt">
-          Non hai ancora un Account? <a>Registrati</a>
+          Non hai ancora un Account? <a (click)="isLogging = false">Registrati</a>
         </p>
-      } @else {
+      </div>
+
+      <!-- Sezione Registrazione -->
+      <ng-template #registerTemplate>
         <div class="form-group">
-          <input type="text" placeholder="Username">
+          <input type="text" [(ngModel)]="cliente.cli_username" placeholder="Username">
         </div>
 
         <div class="form-group">
-          <input type="password" placeholder="Password">
+          <input type="password" [(ngModel)]="cliente.cli_password" placeholder="Password">
         </div>
 
         <div class="form-group">
-          <input type="text" placeholder="Nome">
+          <input type="text" [(ngModel)]="cliente.cli_nome" placeholder="Nome">
         </div>
 
         <div class="form-group">
-          <input type="text" placeholder="Cognome">
+          <input type="text" [(ngModel)]="cliente.cli_cognome" placeholder="Cognome">
         </div>
 
         <div class="form-group">
-          <input type="text" placeholder="Indirizzo">
+          <input type="text" [(ngModel)]="cliente.cli_indirizzo" placeholder="Indirizzo">
         </div>
 
         <div class="form-group">
-          <input type="email" placeholder="Email">
+          <input type="email" [(ngModel)]="cliente.cli_email" placeholder="Email">
         </div>
 
         <div class="form-group">
-          <input type="text" placeholder="Numero di Telefono">
+          <input type="text" [(ngModel)]="cliente.cli_num_tel" placeholder="Numero di Telefono">
         </div>
 
         <div class="form-group">
-          <input type="text" placeholder="Partita Iva">
+          <input type="text" [(ngModel)]="cliente.cli_partita_iva" placeholder="Partita Iva">
         </div>
 
-        <button class="register-button">Registrati</button>
-        
+        <button (click)="registrati()" class="register-button">Registrati</button>
+
         <p class="register-prompt">
-          Hai già un Account? <a>Vai al Login</a>
+          Hai già un Account? <a (click)="isLogging = true">Vai al Login</a>
         </p>
-      }
+      </ng-template>
+
     </div>
   </div>
 </div>

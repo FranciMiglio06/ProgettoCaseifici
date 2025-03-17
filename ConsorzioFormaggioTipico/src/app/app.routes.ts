@@ -11,6 +11,7 @@ import { FormeComponent } from './forme/forme.component';
 import { FormaComponent } from './forma/forma.component';
 
 export const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'consorzio', component: ConsorzioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'caseifici', component: CaseificiComponent },

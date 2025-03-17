@@ -9,6 +9,17 @@ class Cliente
     public $email;
     public $num_tel;
     public $partita_iva;
+    public function __construct($username, $password, $nome, $cognome, $indirizzo, $email, $num_tel, $partita_iva)
+    {
+        $this->username = $username;
+        $this->password = $password;
+        $this->nome = $nome;
+        $this->cognome = $cognome;
+        $this->indirizzo = $indirizzo;
+        $this->email = $email;
+        $this->num_tel = $num_tel;
+        $this->partita_iva = $partita_iva;
+    }
 }
 class Caseifici
 {

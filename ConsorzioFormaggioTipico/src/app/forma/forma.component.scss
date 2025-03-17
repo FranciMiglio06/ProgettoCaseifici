@@ -1,0 +1,73 @@
+/* Stile per il titolo della forma */
+.forma-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenitore galleria */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Informazioni sulla forma */
+.forma-info {
+  font-size: 1rem;
+  color: #555;
+  margin: 20px;
+  text-align: center;
+}
+
+/* Stile per la descrizione */
+.forma-description {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Pulsante "Acquista" */
+.compra-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out;
+  display: block;
+  margin: 0 auto;
+}
+
+.compra-btn:hover {
+  background-color: #218838;
+}
+
+/* Pulsante "Acquista" in focus */
+.compra-btn:focus {
+  outline: none;
+}
+
+/* Adatta la galleria per i dispositivi mobili */
+@media (max-width: 768px) {
+  .forma-title {
+    font-size: 1.6rem;
+  }
+
+  .forma-description {
+    font-size: 1rem;
+  }
+
+  .compra-btn {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+}

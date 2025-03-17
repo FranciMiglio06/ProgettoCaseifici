@@ -60,7 +60,7 @@ function createCliente(Cliente $cliente, $conn)
 //metodo per loggare con il cliente
 function loginCliente(Cliente $cliente, $conn)
 {
-    $username = $cliente->password;
+    $username = $cliente->username;
     $password = $cliente->password;
     $stmt = $conn->prepare("SELECT * FROM clienti WHERE cli_username = ?");
     $stmt->bind_param("s", $username);
@@ -112,8 +112,8 @@ function getForma($conn, $idForma)
     $stmt = $conn->prepare($result);
     $stmt->bind_param("s", $idForma);
     $stmt->execute();
-    $res= $stmt->get_result();
-    $data= $res->fetch_assoc();
+    $res = $stmt->get_result();
+    $data = $res->fetch_assoc();
 
     return $data;
 }

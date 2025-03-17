@@ -1,6 +1,31 @@
-<h1>{{ forma?.for_nome }}</h1>
-<p><strong>Data:</strong> {{ forma?.for_data }}</p>
-<p><strong>Numero Forma:</strong> {{ forma?.for_prezzo_reale }}</p>
-<p><strong>Scelta:</strong> {{ forma?.for_scelta }}</p>
-<p><strong>Prezzo Reale:</strong> €{{ forma?.for_stag_eff }}</p>
-<button (click)="compra(forma?.for_id)"></button>
+<h1 class="forma-title">{{ forma?.for_nome }}</h1>
+
+<div class="gallery-container">
+  <p-galleria
+      [value]="images"
+      [showItemNavigators]="true"
+      [showThumbnails]="false"
+      [showIndicators]="true"
+      [showItemNavigatorsOnHover]="true"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{ 'max-width': '320px', 'box-shadow': '0 4px 10px rgba(0, 0, 0, 0.1)', 'border-radius': '15px' }">
+      <ng-template pTemplate="item" let-item>
+          <img [src]="item.itemImageSrc" style="width: 100%; display: block; border-radius: 15px;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+          <img [src]="item.thumbnailImageSrc" style="display: block; border-radius: 10px; margin-right: 10px;"/>
+      </ng-template>
+  </p-galleria>
+</div>
+
+<div class="forma-info">
+  <p class="forma-description"><strong>Scelta:</strong> {{ forma?.for_scelta }}</p>
+  <p><strong>Data:</strong> {{ forma?.for_data }}</p>
+  <p><strong>Numero Forma:</strong> {{ forma?.for_prezzo_reale }}</p>
+  <p><strong>Prezzo Reale:</strong> €{{ forma?.for_stag_eff }}</p>
+</div>
+
+<button class="compra-btn" (click)="compra(forma?.for_id)">
+  Acquista
+</button>
