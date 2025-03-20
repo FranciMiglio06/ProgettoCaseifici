@@ -1,9 +1,6 @@
 <?php
 session_start();
-/*if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: login.html');
-    exit();
-}*/
+
 include 'classi.php';
 
 function caseifici($conn)
@@ -26,8 +23,9 @@ function caseificio($conn, $id)
     return $caseificio;
 }
 
-function isAdmin($idCliente, $codeCaseificio)
+function isAdmin($codeCaseificio)
 {
+    //$_SESSION['user_data'] prendi il codice del cliente e lo paragoni al cas id del caseificio
     return null;
 }
 
@@ -46,7 +44,7 @@ function createCliente(Cliente $cliente, $conn)
             break;
         }
     }
-    $hashedPassword = password_hash($cliente->password, PASSWORD_DEFAULT);
+    $hashedPassword = hash('sha256', $cliente->password);
     $stmt = $conn->prepare("INSERT INTO clienti (cli_id, username, password, nome, cognome, indirizzo, email, num_tel, partita_iva) 
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("issssssss", $newId, $cliente->username, $hashedPassword, $cliente->nome, $cliente->cognome, $cliente->indirizzo, $cliente->email, $cliente->num_tel, $cliente->partita_iva);
@@ -75,12 +73,11 @@ function loginCliente(Cliente $cliente, $conn)
             $_SESSION['logged_in'] = true;
             $_SESSION['user_data'] = $cliente;
             //Se la password è giusta reindirizza alla pagina principale
-            header('Location: paginaprincipale.php');
+            
             exit();
         }
     }
     //Se la password è errata reindirizza alla pagina di login
-    header('Location: login.html?error=' . urlencode("Username o password errati"));
     exit();
 }
 function getImage($code, $caseifici, $cas_id)
@@ -100,6 +97,7 @@ function compra($cliente, $tipo_forma, $forme, $tipologie)
 {
     //metodo che crea un acquisto 
     $acquisto = new Acquisti($cliente, $tipo_forma, $forme, $tipologie);
+    //query per aggiornare database
     return $acquisto;
 }
 function getForma($conn, $idForma)

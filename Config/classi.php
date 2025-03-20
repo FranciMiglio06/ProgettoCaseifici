@@ -37,7 +37,7 @@ class Acquisti
     public $acq_cli_id;
     public $acq_for_id;
     public $acq_tip_id;
-    public function __construct($cliente, $tipo_forma, $forme, $tipologie)
+    public function __construct($cliente, $forme, $tipologie)
     {
         $this->acq_cli_id = $cliente;
         $this->acq_tip_id = $tipologie;
