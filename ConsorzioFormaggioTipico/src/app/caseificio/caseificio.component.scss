@@ -22,39 +22,26 @@
   color: #555;
   margin: 20px;
   text-align: center;
+  background-color: #161616;
+  padding-bottom: 20px;
+  padding-top: 5px;
 }
 
 /* Stile per la descrizione */
 .caseificio-description {
   font-size: 1.1rem;
   font-weight: 400;
-  color: #666;
+  color: #7e7e7e;
   margin-bottom: 20px;
 }
 
-/* Pulsante "Vedi Forme" */
 .vedi-forme-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease-in-out;
-  display: block;
-  margin: 0 auto;
+  width: auto !important;
+  min-width: 150px; /* Imposta una larghezza minima */
+  padding: 10px 20px; /* Imposta padding per adattare il testo */
+  border-radius: 10px; /* Per mantenere lo stile arrotondato */
 }
 
-.vedi-forme-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Pulsante "Vedi Forme" in focus */
-.vedi-forme-btn:focus {
-  outline: none;
-}
 
 /* Adatta la galleria per i dispositivi mobili */
 @media (max-width: 768px) {
@@ -71,3 +58,5 @@
     padding: 10px 15px;
   }
 }
+
+

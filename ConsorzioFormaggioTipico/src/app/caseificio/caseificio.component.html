@@ -1,6 +1,6 @@
 <h1 class="caseificio-title">{{caseificio?.cas_nome}}</h1>
 
-<div class="gallery-container">
+<div class="gallery-container"> <!-- IMMAGINI DA IMPLEMENTARE IN MODO DINAMICO (DA MODIFICARE SU TS) -->
   <p-galleria
       [value]="images"
       [showItemNavigators]="true"
@@ -20,11 +20,7 @@
 </div>
 
 <div class="caseificio-info">
-  <p class="caseificio-description">{{caseificio?.cas_dex}}</p>
-  <p><strong>Partita IVA:</strong> {{ caseificio?.cas_partita_iva }}</p>
-  <p><strong>Indirizzo:</strong> {{ caseificio?.cas_indirizzo }}</p>
+  <h1>CHI SIAMO</h1> <br>
+  <p class="caseificio-description"> {{caseificio?.cas_dex}}</p>
+  <p-button label="Vedi Forme" class="vedi-forme-btn" (onClick)="vediForme(caseificio?.cas_code)"></p-button>
 </div>
-
-<button class="vedi-forme-btn" (click)="vediForme(caseificio?.cas_code)">
-  Vedi Forme
-</button>

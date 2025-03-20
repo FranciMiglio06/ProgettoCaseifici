@@ -26,6 +26,10 @@
   <p><strong>Prezzo Reale:</strong> €{{ forma?.for_stag_eff }}</p>
 </div>
 
-<button class="compra-btn" (click)="compra(forma?.for_id)">
-  Acquista
-</button>
+<!-- Sostituisci il button con p-button -->
+<p-button 
+  label="Acquista" 
+  styleClass="p-button-success" 
+  [style]="{ 'padding': '12px 20px', 'font-size': '1.1rem', 'border-radius': '30px', 'text-transform': 'uppercase', 'display': 'block', 'margin': '0 auto' }"
+  (onClick)="compra(forma?.for_id)">
+</p-button>

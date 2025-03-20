@@ -1,13 +1,22 @@
-.element {
-    display: flex;
-    align-items: center;
-    height: 4rem;
-}
-
 .container {
     background-color: #D4A017;
     border-radius: 10px;
     height: 65px;
-    width: 100%;
+    width: fit-content; /* Adatta la larghezza al contenuto */
+    position: fixed;
+    bottom: 10px; /* Distanza dal fondo */
+    right: 5px; /* Distanza dal lato destro */
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 
+router-outlet {
+    flex-grow: 1;
 }

@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'caseifici',
   standalone: true,
-  imports: [FormsModule, CommonModule,HttpClientModule],
+  imports: [FormsModule, CommonModule,HttpClientModule,ButtonModule],
   providers:[CaseificioService],
   templateUrl: './caseifici.component.html',
   styleUrl: './caseifici.component.scss'

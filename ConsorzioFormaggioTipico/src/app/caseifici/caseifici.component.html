@@ -10,9 +10,7 @@
       <p><strong>Indirizzo:</strong> {{ caseificio.cas_indirizzo }}</p>
     </div>
     <div class="card-footer">
-      <button (click)="caricaCaseificio(caseificio.cas_code)">
-        Vedi Dettagli
-      </button>
+      <p-button label="Vedi Dettagli" icon="pi pi-search" class="details-btn" (click)="caricaCaseificio(caseificio.cas_code)"></p-button>
     </div>
   </section>
 </div>

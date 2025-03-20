@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormeEditorComponent } from './forme-editor.component';
+import { FormaEditorComponent } from './forma-editor.component';
 
-describe('FormeEditorComponent', () => {
-  let component: FormeEditorComponent;
-  let fixture: ComponentFixture<FormeEditorComponent>;
+describe('FormaEditorComponent', () => {
+  let component: FormaEditorComponent;
+  let fixture: ComponentFixture<FormaEditorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormeEditorComponent]
+      imports: [FormaEditorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FormeEditorComponent);
+    fixture = TestBed.createComponent(FormaEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

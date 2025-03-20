@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CaseificioService } from '../services/caseificio.service';
 import { GalleriaModule } from 'primeng/galleria';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'caseificio',
   standalone: true,
-  imports: [GalleriaModule,HttpClientModule],
+  imports: [GalleriaModule,HttpClientModule,ButtonModule],
     providers:[CaseificioService],
   templateUrl: './caseificio.component.html',
   styleUrl: './caseificio.component.scss'

@@ -8,7 +8,8 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-forme',
   standalone: true,
-  imports: [HttpClientModule,CommonModule],
+  imports: [HttpClientModule,CommonModule
+  ],
       providers:[FormaService],
   templateUrl: './forme.component.html',
   styleUrl: './forme.component.scss'

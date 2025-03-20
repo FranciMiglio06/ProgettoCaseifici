@@ -5,11 +5,12 @@ import { FormaService } from '../services/forma.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { GalleriaModule } from 'primeng/galleria';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'forma',
   standalone: true,
-  imports: [HttpClientModule,CommonModule,GalleriaModule],
+  imports: [HttpClientModule,CommonModule,GalleriaModule,ButtonModule],
   providers:[FormaService],
   templateUrl: './forma.component.html',
   styleUrl: './forma.component.scss'
