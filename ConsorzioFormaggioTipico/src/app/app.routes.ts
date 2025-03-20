@@ -9,11 +9,13 @@ import { NgModule } from '@angular/core';
 import { DatigiornalieriComponent } from './datigiornalieri/datigiornalieri.component';
 import { FormeComponent } from './forme/forme.component';
 import { FormaComponent } from './forma/forma.component';
+import { DatoGiornalieroEditorComponent } from './dato-giornaliero-editor/dato-giornaliero-editor.component';
 
 export const routes: Routes = [
+  { path: 'datoGiornaliero', component: DatoGiornalieroEditorComponent },
+  { path: 'datoGiornaliero/:id', component: DatoGiornalieroEditorComponent },
   { path: 'login', component: LoginComponent },
   { path: 'consorzio', component: ConsorzioComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'caseifici', component: CaseificiComponent },
   { path: 'contatti', component: ContattiComponent },
   { path: 'carrello', component: CarrelloComponent },

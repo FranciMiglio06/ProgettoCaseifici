@@ -46,8 +46,8 @@ function createCliente(Cliente $cliente, $conn)
         }
     }
     $hashedPassword = hash('sha256', $cliente->password);
-    $stmt = $conn->prepare("INSERT INTO clienti (cli_id, username, password, nome, cognome, indirizzo, email, num_tel, partita_iva) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO clienti (cli_id,cli_username, cli_password, cli_nome, cli_cognome, cli_indirizzo, cli_email, cli_num_tel, cli_partita_iva) 
+       VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("issssssss", $newId, $cliente->username, $hashedPassword, $cliente->nome, $cliente->cognome, $cliente->indirizzo, $cliente->email, $cliente->num_tel, $cliente->partita_iva);
 
     if ($stmt->execute()) {
@@ -69,17 +69,23 @@ function loginCliente(Cliente $cliente, $conn)
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         //Verifica se la password hashata è giusta
-        if (password_verify($password, $user['cli_Password'])) {
+        if (password_verify($password, $user['cli_password'])) {
             session_start();
             $_SESSION['logged_in'] = true;
-            $_SESSION['user_data'] = $cliente;
+            $_SESSION['user_data'] = $user;
             //Se la password è giusta reindirizza alla pagina principale
-            
-            exit();
+            return [
+                "success" => true,
+                "message" => "Login riuscito!",
+                "user_id" => $user['cli_id'],
+                "username" => $user['cli_username']
+            ];
         }
     }
     //Se la password è errata reindirizza alla pagina di login
-    exit();
+    return  [
+        "success" => true,
+        "message" => "Login riuscito!"];
 }
 function getImage($code, $caseifici, $cas_id)
 {
@@ -94,10 +100,10 @@ function getImage($code, $caseifici, $cas_id)
     }
     return null; // Se non c'è corrispondenza, restituisce null
 }
-function compra($cliente, $tipo_forma, $forme, $tipologie)
+function compra($cliente, $forme, $tipologie)
 {
     //metodo che crea un acquisto 
-    $acquisto = new Acquisti($cliente, $tipo_forma, $forme, $tipologie);
+    $acquisto = new Acquisti($cliente, $forme, $tipologie);
     //query per aggiornare database
     return $acquisto;
 }

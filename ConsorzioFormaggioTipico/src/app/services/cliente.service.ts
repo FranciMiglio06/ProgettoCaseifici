@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cliente } from '../models/cliente.model';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,27 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
   login(user: Cliente): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login.php`, user);
+    return this.http.post<any>(`${this.apiUrl}login.php`, user).pipe(
+      tap(response => console.log(" Risposta dal server:", response)), // LOG RISPOSTA
+      catchError(error => {
+          console.error(" Errore durante il login:", error);
+          return throwError(() => new Error('Errore di registrazione'));
+      })
+  );
   }
 
+
   // Metodo per la registrazione
-  register(user: Cliente): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register.php`, user);
-  }
+  register(cliente: Cliente): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}registrati.php`, cliente).pipe(
+        tap(response => console.log(" Risposta dal server:", response)), // LOG RISPOSTA
+        catchError(error => {
+            console.error(" Errore durante la registrazione:", error);
+            return throwError(() => new Error('Errore di registrazione'));
+        })
+    );
+}
+
   addClient(client: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(this.apiUrl, client);
   }

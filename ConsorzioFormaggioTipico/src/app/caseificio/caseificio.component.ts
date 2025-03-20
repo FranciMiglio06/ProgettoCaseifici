@@ -5,12 +5,13 @@ import { CaseificioService } from '../services/caseificio.service';
 import { GalleriaModule } from 'primeng/galleria';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'caseificio',
   standalone: true,
-  imports: [GalleriaModule,HttpClientModule,ButtonModule],
-    providers:[CaseificioService],
+  imports: [GalleriaModule,HttpClientModule,ButtonModule,HttpClientModule],
+  providers:[CaseificioService,ClienteService],
   templateUrl: './caseificio.component.html',
   styleUrl: './caseificio.component.scss'
 })
@@ -18,9 +19,15 @@ export class CaseificioComponent implements OnInit {
   caseificio: Caseificio | null = null;
 
   constructor(
+    private clienteService:ClienteService,
       private router: Router
     ) {}
-
+    isAuthenticated(){
+      return this.clienteService.isAuthenticated();
+    }
+    vediDatiGiornalieri(code:any){
+      this.router.navigate(['datiGiornalieri', code]);
+    }
   private route = inject(ActivatedRoute);
   private caseificioService = inject(CaseificioService);
   images = [

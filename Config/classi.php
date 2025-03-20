@@ -20,6 +20,7 @@ class Cliente
         $this->num_tel = $num_tel;
         $this->partita_iva = $partita_iva;
     }
+    
 }
 class Caseifici
 {

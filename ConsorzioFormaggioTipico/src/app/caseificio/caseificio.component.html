@@ -18,6 +18,11 @@
       </ng-template>
   </p-galleria>
 </div>
+<div *ngIf="isAuthenticated()" class="dati-giornalieri-info">
+  <h1>DATI GIORNALIERI</h1> <br>
+  <p class="dati-giornalieri-description"> Vedi i dati giornalieri relativi al caseificio.</p>
+  <p-button label="Vedi Dati Giornalieri" class="vedi-dati-btn" (onClick)="vediDatiGiornalieri(caseificio?.cas_code)"></p-button>
+</div>
 
 <div class="caseificio-info">
   <h1>CHI SIAMO</h1> <br>

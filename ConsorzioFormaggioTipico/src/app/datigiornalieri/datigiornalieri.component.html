@@ -1,12 +1,24 @@
 <div class="calendar-container">
   <div class="calendar-grid">
-    <div *for="let dato of datiGiornalieri" class="calendar-card">
-      <h3>{{ dato.dat_data | date:'dd/MM/yyyy' }}</h3>
-      <p><strong>Forme prodotte:</strong> {{ dato.dat_num_forme_prod }}</p>
-      <p><strong>Forme vendute:</strong> {{ dato.dat_num_forme_vendute }}</p>
-      <p><strong>Latte lavorato:</strong> {{ dato.dat_latte_lav }} L</p>
-      <p><strong>Latte per formaggio:</strong> {{ dato.dat_latte_formaggio }} L</p>
-      <button (click)="aggiungiDati()">Aggiungi</button>
+    <!-- Ciclo su tutte le date di gennaio -->
+    <div *ngFor="let data of gennaioDates" class="calendar-card">
+      <h3>{{ data }}</h3>
+
+      <!-- Se ci sono dati, visualizzali -->
+      <div *ngIf="hasDatiPerData(data)">
+        <p><strong>Forme prodotte:</strong> {{ getDatiPerData(data)?.dat_num_forme_prod }}</p>
+        <p><strong>Forme vendute:</strong> {{ getDatiPerData(data)?.dat_num_forme_vendute }}</p>
+        <p><strong>Latte lavorato:</strong> {{ getDatiPerData(data)?.dat_latte_lav }} L</p>
+        <p><strong>Latte per formaggio:</strong> {{ getDatiPerData(data)?.dat_latte_formaggio }} L</p>
+
+        <!-- Bottone per modificare i dati esistenti -->
+        <button (click)="modificaDati(data)">Modifica Dato</button>
+      </div>
+
+      <!-- Se non ci sono dati per la data, mostra il bottone "Aggiungi Dato" -->
+      <div *ngIf="!hasDatiPerData(data)">
+        <button (click)="aggiungiDati()">Aggiungi Dato</button>
+      </div>
     </div>
   </div>
 </div>

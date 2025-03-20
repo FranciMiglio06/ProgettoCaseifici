@@ -58,5 +58,21 @@
     padding: 10px 15px;
   }
 }
+.dati-giornalieri-info {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}
 
+.vedi-dati-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
 
+.vedi-dati-btn:hover {
+  background-color: #0056b3;
+}

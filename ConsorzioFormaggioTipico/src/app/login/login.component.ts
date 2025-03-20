@@ -6,12 +6,13 @@ import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { Cliente } from '../models/cliente.model';
 import { ClienteService } from '../services/cliente.service';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [CommonModule,FormsModule,ImageModule,ButtonModule],
+  imports: [CommonModule,FormsModule,ImageModule,ButtonModule,HttpClientModule],
+  providers:[ClienteService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -35,14 +36,16 @@ export class LoginComponent {
     this.clienteService.login(this.cliente).subscribe(
       (response) => {
         // Salva il token in localStorage se il login ha successo
-        localStorage.setItem('authToken', response.token);
-        console.log('Login riuscito! Token:', response.token);
+        if(response.success){
+        localStorage.setItem('authToken', response.success);
+        console.log('Login riuscito! Token:', response.success);
         // Reindirizza l'utente alla home o alla pagina protetta
         this.router.navigate(['consorzio']);
+        }
       },
       (error) => {
         // Se si verifica un errore (ad esempio, credenziali errate)
-        alert('Email o password errati!');
+        alert('Username o password errati!');
         console.error('Errore durante il login:', error);
       }
     );

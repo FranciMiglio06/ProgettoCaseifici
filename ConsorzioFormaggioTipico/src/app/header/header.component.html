@@ -10,7 +10,12 @@
             <p-button [styleClass]="'custom-btn'" label="Caseifici" (onMouseover)="onButtonHover($event)" (click)="navigateTo('caseifici')"/>
         </div>
         <div class="element">
-            <p-button [styleClass]="'custom-btn'" label="Login" (onMouseover)="onButtonHover($event)" (click)="navigateTo('login')"/>
+          <!-- Cambia il testo e la funzione di navigazione in base allo stato di autenticazione -->
+          <p-button
+            [styleClass]="'custom-btn'"
+            [label]="isAuthenticated() ? 'Logout' : 'Login'"
+            (onMouseover)="onButtonHover($event)"
+            (click)="isAuthenticated() ? logout():navigateTo('login')" />
         </div>
         <div class="element">
             <p-button [styleClass]="'custom-btn'" label="Contatti" (onMouseover)="onButtonHover($event)" (click)="navigateTo('contatti')"/>

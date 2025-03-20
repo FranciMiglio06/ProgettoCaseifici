@@ -1,26 +1,26 @@
 <div class="container">
-    <h1>Gestione Dato Giornaliero</h1>
+  <h1>Gestione Dato Giornaliero</h1>
 
-    <form>
-        <label for="dat-latte-lav">Latte Lavorato (litri):</label>
-        <input type="number" id="dat-latte-lav" name="dat-latte-lav" step="0.01" />
+  <form>
+    <label for="dat-latte-lav">Latte Lavorato (litri):</label>
+    <input type="number" id="dat-latte-lav" name="dat-latte-lav" step="0.01" />
 
-        <label for="dat-latte-formaggio">Latte per Formaggio (litri):</label>
-        <input type="number" id="dat-latte-formaggio" name="dat-latte-formaggio" step="0.01" />
+    <label for="dat-latte-formaggio">Latte per Formaggio (litri):</label>
+    <input type="number" id="dat-latte-formaggio" name="dat-latte-formaggio" step="0.01" />
 
-        <label for="dat-data">Data:</label>
-        <input type="datetime-local" id="dat-data" name="dat-data" />
+    <label for="dat-data">Data:</label>
+    <input type="datetime-local" id="dat-data" name="dat-data" />
 
-        <label for="dat-num-forme-prod">Numero Forme Prodotte:</label>
-        <input type="number" id="dat-num-forme-prod" name="dat-num-forme-prod" />
+    <label for="dat-num-forme-prod">Numero Forme Prodotte:</label>
+    <input type="number" id="dat-num-forme-prod" name="dat-num-forme-prod" />
 
-        <label for="dat-num-forme-vendute">Numero Forme Vendute:</label>
-        <input type="number" id="dat-num-forme-vendute" name="dat-num-forme-vendute" />
+    <label for="dat-num-forme-vendute">Numero Forme Vendute:</label>
+    <input type="number" id="dat-num-forme-vendute" name="dat-num-forme-vendute" />
 
-        <div class="actions">
-            <p-button label="Salva" icon="pi pi-check" class="save-btn"></p-button>
-            <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning"></p-button>
-            <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger"></p-button>
-        </div>
-    </form>
+    <div class="actions">
+      <p-button label="Salva" icon="pi pi-check" class="save-btn" (click)="salvaDato()"></p-button>
+      <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning" (click)="resetForm()"></p-button>
+      <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger" (click)="eliminaDato()"></p-button>
+    </div>
+  </form>
 </div>

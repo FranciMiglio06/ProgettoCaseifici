@@ -9,7 +9,7 @@
       <!-- Sezione Login -->
       <div *ngIf="isLogging; else registerTemplate">
         <div class="form-group">
-          <input type="email" [(ngModel)]="cliente.cli_username" placeholder="Username">
+          <input type="username" [(ngModel)]="cliente.cli_username" placeholder="Username">
         </div>
 
         <div class="form-group">
