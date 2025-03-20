@@ -9,7 +9,7 @@ $conn = require_once(__DIR__ . '/../config/connessione.php');
 require_once(__DIR__ . '/../config/metodi.php');
 
 
-$dati = caseifici($conn);
+$dati = getCaseifici($conn);
 
 if ($dati === false || empty($dati)) {
     echo json_encode(["errore" => "Nessun dato trovato o errore nel database"]);

@@ -8,5 +8,7 @@ header("Access-Control-Allow-Credentials: true");
 $conn = require_once(__DIR__ . '/../config/connessione.php');
 require_once(__DIR__ . '/../config/metodi.php');
 
+
+$codeCaseificio= $_GET['idCaseificio'];
 echo json_encode(getDatiGiornalieri($conn,$codeCaseificio));
 ?>
