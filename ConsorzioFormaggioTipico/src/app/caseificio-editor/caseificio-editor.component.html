@@ -15,9 +15,9 @@
         <input type="text" id="partita-iva" name="partita-iva" />
 
         <div class="actions">
-            <p-button label="Salva" icon="pi pi-check" class="save-btn"></p-button>
-            <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning"></p-button>
-            <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger"></p-button>
-        </div>
+            <p-button label="Salva" icon="pi pi-check" class="save-btn" (click)="salvaDato()"></p-button>
+            <p-button label="Reset" icon="pi pi-refresh" class="reset-btn" severity="warning" (click)="resetForm()"></p-button>
+            <p-button label="Elimina" icon="pi pi-trash" class="delete-btn" severity="danger" (click)="eliminaDato()"></p-button>
+          </div>
     </form>
 </div>

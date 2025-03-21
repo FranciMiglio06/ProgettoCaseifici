@@ -10,10 +10,25 @@ import { DatigiornalieriComponent } from './datigiornalieri/datigiornalieri.comp
 import { FormeComponent } from './forme/forme.component';
 import { FormaComponent } from './forma/forma.component';
 import { DatoGiornalieroEditorComponent } from './dato-giornaliero-editor/dato-giornaliero-editor.component';
+import { FormaEditorComponent } from './forma-editor/forma-editor.component';
+import { StagionatureEditorComponent } from './stagionature-editor/stagionature-editor.component';
+import { CaseificioEditorComponent } from './caseificio-editor/caseificio-editor.component';
+import { TipoFormaEditorComponent } from './tipo-forma-editor/tipo-forma-editor.component';
+import { TipoUtenteEditorComponent } from './tipo-utente-editor/tipo-utente-editor.component';
 
 export const routes: Routes = [
-  { path: 'datoGiornaliero', component: DatoGiornalieroEditorComponent },
-  { path: 'datoGiornaliero/:id', component: DatoGiornalieroEditorComponent },
+  { path: 'editorTipoForma', component: TipoFormaEditorComponent },
+  { path: 'editorTipoForma/:id', component: TipoFormaEditorComponent },
+  { path: 'editorTipoUtente', component: TipoUtenteEditorComponent },
+  { path: 'editorTipoUtente/:id', component: TipoUtenteEditorComponent },
+  { path: 'editorCaseificio', component: CaseificioEditorComponent },
+  { path: 'editorCaseificio/:id', component: CaseificioEditorComponent },
+  { path: 'editorStagionatura', component: StagionatureEditorComponent },
+  { path: 'editorStagionatura/:id', component: StagionatureEditorComponent },
+  { path: 'editorForma', component: FormaEditorComponent },
+  { path: 'editorForma/:id', component: FormaEditorComponent },
+  { path: 'editorDatoGiornaliero', component: DatoGiornalieroEditorComponent },
+  { path: 'editorDatoGiornaliero/:id', component: DatoGiornalieroEditorComponent },
   { path: 'login', component: LoginComponent },
   { path: 'consorzio', component: ConsorzioComponent },
   { path: 'caseifici', component: CaseificiComponent },

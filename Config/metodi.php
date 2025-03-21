@@ -87,18 +87,19 @@ function loginCliente(Cliente $cliente, $conn)
         "success" => true,
         "message" => "Login riuscito!"];
 }
-function getImage($code, $caseifici, $cas_id)
+function getImage($conn,$idImage)
 {
-    foreach ($caseifici as $key => $value) {
-        if ($value == $code) {
-            foreach ($cas_id as $image_key => $image_value) {
-                if ($image_value == $key) { // Se il valore dell'immagine corrisponde all'id del caseificio
-                    return $image_key; // Restituisce la chiave dell'immagine corrispondente
-                }
-            }
-        }
-    }
-    return null; // Se non c'è corrispondenza, restituisce null
+    $result = "SELECT * 
+    FROM immagini
+    WHERE  imm_id = ? "
+    ;
+    $stmt = $conn->prepare($result);
+    $stmt->bind_param("i", $idImage);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $data = $res->fetch_assoc();
+
+    return $data;
 }
 function compra($cliente, $forme, $tipologie)
 {

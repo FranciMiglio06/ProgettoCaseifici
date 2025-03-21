@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2>Gestione Tipo Forma</h2>
+    <form [formGroup]="tipoFormaForm" (ngSubmit)="onSubmitTipoForma()">
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input type="number" class="form-control" formControlName="id">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-control" formControlName="nome">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descrizione</label>
+            <textarea class="form-control" formControlName="descrizione"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!tipoFormaForm.valid">Salva Tipo Forma</button>
+    </form>
+    </div>

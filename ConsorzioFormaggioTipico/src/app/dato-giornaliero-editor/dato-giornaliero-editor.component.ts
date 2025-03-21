@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { DatoGiornaliero } from '../models/datogiornaliero.model';
 import { ActivatedRoute } from '@angular/router';
+import { DatoGiornalieroService } from '../services/datogiornaliero.service';
 
 @Component({
   selector: 'dato-giornaliero-editor',
@@ -21,7 +22,7 @@ export class DatoGiornalieroEditorComponent implements OnInit {
     dat_num_forme_vendute: 0,
     dat_cas_code: 0,
   };
-  constructor(private route: ActivatedRoute) {}
+  constructor( private datoGiornalieroService:DatoGiornalieroService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     // Ottieni i parametri della rotta
@@ -49,12 +50,14 @@ export class DatoGiornalieroEditorComponent implements OnInit {
     if (numFormeProd) numFormeProd.value = dato.dat_num_forme_prod.toString();
     if (numFormeVendute) numFormeVendute.value = dato.dat_num_forme_vendute.toString();
   }
-
+  ngOnChanges() {
+    
+  }
   // Funzione per gestire il salvataggio (aggiungi logica di salvataggio, ad esempio, invio al server)
   salvaDato(): void {
     if (this.datoGiornaliero) {
-      console.log('Salvando DatoGiornaliero:', this.datoGiornaliero);
-      // Aggiungi la logica per salvare o inviare i dati
+      
+      
     }
   }
 
