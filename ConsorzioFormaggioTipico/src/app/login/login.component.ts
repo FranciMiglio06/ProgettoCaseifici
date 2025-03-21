@@ -37,8 +37,8 @@ export class LoginComponent {
       (response) => {
         // Salva il token in localStorage se il login ha successo
         if(response.success){
-        localStorage.setItem('authToken', response.success);
-        console.log('Login riuscito! Token:', response.success);
+        localStorage.setItem('authToken', response.user_id);
+        console.log('Login riuscito! Token:', response.user_id);
         // Reindirizza l'utente alla home o alla pagina protetta
         this.router.navigate(['consorzio']);
         }

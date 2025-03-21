@@ -313,3 +313,60 @@ function deleteForme($conn, Forme $forme)
 }
 //Crea aggiorna ed elimina tipologia cliente
 //metodo compra
+function countFormeByDate($conn, $data, $caseificio_id = null)
+{
+
+    $query = "SELECT COUNT(*) as total_forme 
+              FROM forme f
+              JOIN dati_giornalieri d ON f.for_dat_id = d.dat_id
+              WHERE DATE(f.for_data) = ?";
+    
+    // Se è specificato un caseificio, aggiungi la condizione
+    if ($caseificio_id !== null) {
+        $query .= " AND d.dat_cas_code = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("si", $data, $caseificio_id);
+    } else {
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $data);
+    }
+    
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['total_forme'];
+}
+function creaForme($conn, $numForme, $forma) {
+    $query = "INSERT INTO forme (for_data, for_num_forma, for_nome, for_peso, for_scelta, for_stag_eff, for_venduta, for_data_acquisto, for_dat_id, for_prezzo_reale, for_tip_id, for_sta_id) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $conn->prepare($query);
+
+    if (!$stmt) {
+        die("Errore nella preparazione della query: " . $conn->error);
+    }
+
+    for ($i = 0; $i < $numForme; $i++) {
+        $stmt->bind_param(
+            "sisdiissddii", 
+            $forma->for_data, 
+            $forma->for_num_forma, 
+            $forma->for_nome, 
+            $forma->for_peso, 
+            $forma->for_scelta, 
+            $forma->for_stag_eff, 
+            $forma->for_venduta, 
+            $forma->for_data_acquisto, 
+            $forma->for_dat_id, 
+            $forma->for_prezzo_reale, 
+            $forma->for_tip_id, 
+            $forma->for_sta_id
+        );
+
+        if (!$stmt->execute()) {
+            echo "Errore nell'inserimento: " . $stmt->error;
+        }
+    }
+
+    $stmt->close();
+}
